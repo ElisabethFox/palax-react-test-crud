@@ -1,1 +1,0 @@
-# palax-react-test-crud
