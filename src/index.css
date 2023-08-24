@@ -44,7 +44,6 @@ code {
   height: 80vh;
 
   margin: 10px;
-  padding: 10px;
 
   background-color: var(--light-green);
   border-radius: 10px;
@@ -53,9 +52,26 @@ code {
 
 .users__container{
   width: 30%;
+  padding: 10px;
+
   border-right: 1px groove var(--dark-green);
 }
 
 .posts__container{
   width: 70%;
+}
+
+.user {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 auto;
+  padding: 10px;
+
+  background-color: var(--middle-green);
+
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
