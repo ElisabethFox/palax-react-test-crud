@@ -1,3 +1,12 @@
+@import './reset.css';
+
+:root {
+  --super-dark-green: #2B4C15;
+  --dark-green: #477F24;
+  --middle-green: #BCE5A2;
+  --light-green: #E9F6E0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +14,37 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--middle-green);
+  color: var(--dark-green);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.main-title {
+  margin: 20px 10px;
+  color: var(--super-dark-green);
+}
+
+.card {
+  width: 80vw;
+  height: 80vh;
+
+  margin: 10px;
+  padding: 10px;
+
+  background-color: var(--light-green);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--dark-green);
 }
