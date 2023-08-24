@@ -38,6 +38,8 @@ code {
 }
 
 .card {
+  display: flex;
+
   width: 80vw;
   height: 80vh;
 
@@ -47,4 +49,13 @@ code {
   background-color: var(--light-green);
   border-radius: 10px;
   box-shadow: 5px 5px 5px var(--dark-green);
+}
+
+.users__container{
+  width: 30%;
+  border-right: 1px groove var(--dark-green);
+}
+
+.posts__container{
+  width: 70%;
 }
