@@ -7,6 +7,7 @@ import { setCurrentUser } from "../slices/usersSlice";
 const UsersContainer = () => {
     const dispatch = useDispatch();
     const users = useSelector(usersSelector.selectAll) ?? null;
+    console.log(users)
 
     const handleSetCurrentUser = (id) => {
         dispatch(setCurrentUser(id));

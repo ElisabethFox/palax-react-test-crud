@@ -5,9 +5,6 @@ const AppCard = () => {
     return (
         <div className="card">
             <UsersContainer />
-            <div className="post__container">
-
-            </div>
         </div>
     );
 }

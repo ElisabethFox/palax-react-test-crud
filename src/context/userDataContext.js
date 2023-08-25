@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 
 export const UserDataContext = createContext({});
 
-const UserDataContextProvider = ({ socket, children }) => {
+const UserDataContextProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const getUsersData = async () => {
