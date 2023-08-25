@@ -1,5 +1,5 @@
-import PostsContainer from "./PostsContainer";
-import UsersContainer from "./UsersContainer";
+import PostsContainer from "./posts/PostsContainer";
+import UsersContainer from "./users/UsersContainer";
 
 
 const AppCard = () => {

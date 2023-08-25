@@ -131,6 +131,12 @@ code {
   color: var(--light-blue);
 }
 
+.post-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+}
+
 .post-icon {
   margin: 0 5px;
 }

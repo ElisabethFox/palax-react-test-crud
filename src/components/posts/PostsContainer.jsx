@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { currentUser, postsSelector } from "../selectors";
+import { currentUser, postsSelector } from "../../selectors";
 import Post from "./Post";
 
 const PostsContainer = () => {

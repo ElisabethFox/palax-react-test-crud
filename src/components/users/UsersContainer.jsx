@@ -1,11 +1,11 @@
 import User from "./User";
-import { usersSelector } from "../selectors";
+import { usersSelector } from "../../selectors";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../slices/usersSlice";
+import { setCurrentUser } from "../../slices/usersSlice";
 import axios from "axios";
-import { usePostsData } from "../hooks";
-import fetchPostsData from "../fetchPostsData";
+import { usePostsData } from "../../hooks";
+import fetchPostsData from "../../fetchPostsData";
 
 const UsersContainer = () => {
     const dispatch = useDispatch();
