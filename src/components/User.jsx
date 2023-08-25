@@ -1,7 +1,6 @@
 import cn from "classnames";
 import { useSelector } from "react-redux";
 import { currentUser } from "../selectors";
-import { usePostsData } from "../hooks";
 
 const User = ({ user, onClick }) => {
     const currentUserData = useSelector(currentUser);
