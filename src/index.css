@@ -55,6 +55,23 @@ code {
   padding: 10px;
 
   border-right: 1px groove var(--dark-blue);
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.users__container::-webkit-scrollbar{
+  width: 10px;
+}
+
+.users__container::-webkit-scrollbar-track {
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.users__container::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--middle-blue), var(--super-dark-blue));
 }
 
 .posts__container{
