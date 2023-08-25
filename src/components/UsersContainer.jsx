@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const UsersContainer = () => {
     const users = useSelector(usersSelector.selectAll) ?? null;
-    console.log(users)
 
     return (
         <div className="users__container">
