@@ -1,11 +1,14 @@
 import { Provider } from 'react-redux';
 import App from './components/App';
 import store from './slices';
+import UserDataContextProvider from './context/userDataContext';
 
 const init = () => {
     return (
         <Provider store={store}>
-            <App></App>
+            <UserDataContextProvider>
+                <App />
+            </UserDataContextProvider>
         </Provider>
     )
 };

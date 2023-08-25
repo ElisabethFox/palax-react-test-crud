@@ -9,8 +9,8 @@ const UserDataContextProvider = ({ socket, children }) => {
   const dispatch = useDispatch();
 
   const getUsersData = async () => {
-    const response = axios.get('https://jsonplaceholder.typicode.com/users');
-    console.log(response)
+    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    console.log(response.data)
     return response;
   };
 
