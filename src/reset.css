@@ -29,6 +29,7 @@ aside, nav, footer, header, section, main {
 
 ul, ul li {
 	list-style: none;
+	cursor: pointer;
 }
 
 img {

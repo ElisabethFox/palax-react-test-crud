@@ -2,9 +2,8 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import fetchUsersData from '../fetchUsersData';
 
 const usersAdapter = createEntityAdapter();
-const defaultUserId = 1;
 const initialState = usersAdapter.getInitialState({
-  currentUserId: defaultUserId,
+  currentUserId: null,
 });
 
 const usersSlice = createSlice({
@@ -16,7 +15,7 @@ const usersSlice = createSlice({
     },
     removeUser: (state, { payload }) => {
       if (state.currentUserId === payload) {
-        state.currentUserId = defaultUserId;
+        state.currentUserId = null;
       }
       usersAdapter.removeOne(state, payload);
     },

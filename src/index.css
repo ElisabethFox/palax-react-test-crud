@@ -65,7 +65,7 @@ code {
 }
 
 .users__container::-webkit-scrollbar-track {
-  margin-top: 10px;
+  margin: 10px 0;
   border-radius: 10px;
 }
 
@@ -91,4 +91,10 @@ code {
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
+}
+
+.current-user {
+  background-color: var(--super-dark-blue);
+  color: var(--light-blue);
+  font-weight: bold;
 }
