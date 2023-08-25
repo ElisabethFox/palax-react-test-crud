@@ -1,4 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import fetchUsersData from '../fetchUsersData';
 
 const usersAdapter = createEntityAdapter();
 const defaultUserId = 1;
@@ -20,6 +21,12 @@ const usersSlice = createSlice({
       usersAdapter.removeOne(state, payload);
     },
     renameUser: usersAdapter.updateOne,
+  },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsersData.fulfilled, (state, { payload }) => {
+      usersAdapter.setAll(state, payload.users);
+    });
   },
 });
 
