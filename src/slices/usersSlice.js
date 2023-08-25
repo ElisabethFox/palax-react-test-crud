@@ -25,7 +25,6 @@ const usersSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(fetchUsersData.fulfilled, (state, { payload }) => {
-      state.usersData = payload;
       usersAdapter.setAll(state, payload);
     });
   },

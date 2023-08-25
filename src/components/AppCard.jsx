@@ -1,14 +1,10 @@
-import User from "./User";
+import UsersContainer from "./UsersContainer";
+
 
 const AppCard = () => {
     return (
         <div className="card">
-            <div className="users__container">
-                <ul className="users__list">
-                <User />
-                </ul>
-            </div>
-
+            <UsersContainer />
             <div className="post__container">
 
             </div>

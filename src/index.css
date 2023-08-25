@@ -1,10 +1,10 @@
 @import './reset.css';
 
 :root {
-  --super-dark-green: #2B4C15;
-  --dark-green: #477F24;
-  --middle-green: #BCE5A2;
-  --light-green: #E9F6E0;
+  --super-dark-blue: #3B5998;
+  --dark-blue: #808CBA;
+  --middle-blue: #9FA8CB;
+  --light-blue: #DFE1EE;
 }
 
 body {
@@ -15,8 +15,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-color: var(--middle-green);
-  color: var(--dark-green);
+  background-color: var(--middle-blue);
+  color: var(--super-dark-blue);
 }
 
 code {
@@ -34,7 +34,7 @@ code {
 
 .main-title {
   margin: 20px 10px;
-  color: var(--super-dark-green);
+  color: var(--super-dark-blue);
 }
 
 .card {
@@ -45,16 +45,16 @@ code {
 
   margin: 10px;
 
-  background-color: var(--light-green);
+  background-color: var(--light-blue);
   border-radius: 10px;
-  box-shadow: 5px 5px 5px var(--dark-green);
+  box-shadow: 5px 5px 5px var(--dark-blue);
 }
 
 .users__container{
   width: 30%;
   padding: 10px;
 
-  border-right: 1px groove var(--dark-green);
+  border-right: 1px groove var(--dark-blue);
 }
 
 .posts__container{
@@ -66,10 +66,10 @@ code {
 
   width: 100%;
 
-  margin: 0 auto;
+  margin: 2px auto;
   padding: 10px;
 
-  background-color: var(--middle-green);
+  background-color: var(--middle-blue);
 
   white-space: nowrap;
   overflow-x: hidden;

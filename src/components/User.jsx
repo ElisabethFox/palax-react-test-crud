@@ -1,7 +1,7 @@
-const User = () => {
+const User = ({ username }) => {
     return (
         <li className="user">
-            Lisaqw;efjrhgsjfjdkopslq[pdkfsjfbdokdpsla]
+            {username}
         </li>
     );
 }
