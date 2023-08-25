@@ -8,8 +8,9 @@ export const PostDataContext = createContext({});
 const PostDataContextProvider = ({ children }) => {
   const dispatch = useDispatch();
 
-  const getPostsData = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com//posts/1');
+  const getPostsData = async (userId) => {
+    // const path = `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
     return response;
   };
 
