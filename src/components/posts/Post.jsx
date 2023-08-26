@@ -5,6 +5,12 @@ import { useDispatch } from "react-redux";
 const Post = ({ post }) => {
     const dispatch = useDispatch();
 
+    const handleChangePost = (id) => {
+        dispatch(setCurrentModalType('change'));
+        dispatch(setRelevantPost(id));
+        dispatch(openModalWindow());
+    };
+
     const handleDeletePost = (id) => {
         dispatch(setCurrentModalType('delete'));
         dispatch(setRelevantPost(id));
@@ -14,9 +20,9 @@ const Post = ({ post }) => {
     return (
         <li className="post">
             <div className="post__header">
-            <h4 className="post__title">{post.title}</h4>
+            <h5 className="post__title">{post.title}</h5>
             <div className="post-menu">
-                <button className="post-icon">
+                <button className="post-icon" onClick={() => handleChangePost(post.id)}>
                     <FaPencilAlt />
                 </button>
                 <button className="post-icon" onClick={() => handleDeletePost(post.id)}>

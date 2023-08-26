@@ -1,23 +1,26 @@
 import PostsContainer from "./posts/PostsContainer";
 import UsersContainer from "./users/UsersContainer";
+import UserInfo from "./UserInfo";
+import { useSelector } from "react-redux";
+import { currentUser } from "../selectors";
 
 
 const AppCard = () => {
+    const currentUserData = useSelector(currentUser) ?? null;
+
     return (
-        <div>
-        <div className="card">
+        <div className="app-card">
             <div className="card__headers">
             <div className="users__header">
-                <h3>USERNAMES</h3>
+                <h5>USERNAMES</h5>
             </div>
             <div className="posts__header">
-                <h3>POSTS</h3>
+                <UserInfo user={currentUserData} />
             </div>
-        </div>
-        <div  className="card-containers">
+            </div>
+        <div className="card-containers">
             <UsersContainer />
             <PostsContainer />
-        </div>
         </div>
         </div>
     );

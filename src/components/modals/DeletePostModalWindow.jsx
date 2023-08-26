@@ -35,8 +35,8 @@ const DeletePostModalWindow = () => {
       <div className="modal-body">
         <p className="lead">Are you sure?</p>
         <div className="d-flex justify-content-end">
-          <ModalButton title="Отмена" priority={false}/>
-          <ModalButton title="Delete" priority={true} onClick={() => handleDeletePost(relevantPostId)} />
+          <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
+          <ModalButton title="Delete" priority onClick={() => handleDeletePost(relevantPostId)} />
         </div>
       </div>
     </Modal>

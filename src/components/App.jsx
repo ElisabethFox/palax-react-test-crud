@@ -19,7 +19,7 @@ const App = () => {
     }, [dispatch, getPostsData, getUsersData]);
 
     return (
-        <div className="container">
+        <div className="app-container">
             <h1 className="main-title">USERS & POSTS</h1>
             <ModalWindow />
             <AppCard />
