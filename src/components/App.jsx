@@ -5,6 +5,7 @@ import { useUsersData } from "../hooks";
 import fetchUsersData from "../fetchUsersData";
 import fetchPostsData from "../fetchPostsData";
 import { usePostsData } from "../hooks";
+import ModalWindow from "./modals/ModalWindow";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
 
     return (
         <div className="container">
+            <ModalWindow />
             <h1 className="main-title">USERS & POSTS</h1>
             <AppCard />
         </div>
