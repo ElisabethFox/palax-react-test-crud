@@ -1,0 +1,25 @@
+.modal-button {
+    padding: 8px 10px;
+    margin: 15px 5px 0;
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+    border: none;
+    border-radius: 5px;
+}
+
+.high-priority {
+    background-color: var(--super-dark-blue);
+}
+
+.modal-button:hover {
+    color: var(--super-dark-blue);
+    background-color: var(--middle-blue);
+};
+
+.modal-button:active {
+    color: var(--super-dark-blue);
+    background-color: var(--middle-blue);
+
+    position: relative;
+    top: 2px;
+}

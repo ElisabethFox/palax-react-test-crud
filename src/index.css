@@ -1,4 +1,5 @@
 @import './reset.css';
+@import 'bootstrap';
 
 :root {
   --super-dark-blue: #3B5998;

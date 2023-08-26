@@ -2,15 +2,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import { usePostsData } from '../../hooks';
 import { closeModalWindow, setCurrentModalType, setRelevantPost } from '../../slices/modalWindowsSlice';
+import ModalButton from './ModalButton';
 
 const DeletePostModalWindow = () => {
     const dispatch = useDispatch();
-    const { deletePost } = usePostsData();
+    const { deleteChangedPost } = usePostsData();
     const relevantPostId = useSelector((state) => state.modal.relevantPost);
+    const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
 
     const handleDeletePost = (id) => {
         try {
-            deletePost(id);
+          deleteChangedPost(id);
             dispatch(closeModalWindow());
         } catch (error) {
             console.log('!!!!')
@@ -24,7 +26,7 @@ const DeletePostModalWindow = () => {
       };
     
     return (
-    <Modal show={true}>
+    <Modal show={isModalWindowOpen}>
       <div className="modal-header">
         <div className="modal-title h4">Delete Post</div>
         <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModalWindow} />
@@ -33,24 +35,12 @@ const DeletePostModalWindow = () => {
       <div className="modal-body">
         <p className="lead">Are you sure?</p>
         <div className="d-flex justify-content-end">
-          
-          <button type="button" className="btn btn-danger w-40" onClick={() => handleDeletePost(relevantPostId)}>
-            Delete
-          </button>
+          <ModalButton title="Отмена" priority={false}/>
+          <ModalButton title="Delete" priority={true} onClick={() => handleDeletePost(relevantPostId)} />
         </div>
       </div>
     </Modal>
-
-//     <div class="modal-window">
-//     <div class="modal-window-active">
-//         <div class="modal-close__button">
-//             CLOSE
-//         </div>
-//         <div class="modal-window__body"> DELETE? </div>
-//     </div>
-// </div>
-
-    );
+  );
 }
  
 export default DeletePostModalWindow;

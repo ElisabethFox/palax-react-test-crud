@@ -10,6 +10,10 @@ const postsSlice = createSlice({
   reducers: {
     addPost: postsAdapter.addOne,
     addPosts: postsAdapter.addMany,
+    deletePost: (state, { payload }) => {
+      postsAdapter.removeOne(state, payload);
+    },
+    changePost: postsAdapter.updateOne,
   },
   extraReducers: (builder) => {
     builder.addCase(fetchPostsData.fulfilled, (state, { payload }) => {
@@ -18,6 +22,6 @@ const postsSlice = createSlice({
   },
 });
 
-export const { addPosts } = postsSlice.actions;
+export const { addPosts, deletePost, changePost } = postsSlice.actions;
 export { postsAdapter };
 export default postsSlice.reducer;
