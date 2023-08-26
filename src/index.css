@@ -37,7 +37,38 @@ code {
   color: var(--super-dark-blue);
 }
 
+.card__headers{
+  display: flex;
+
+  height: 50px;
+
+  background-color: var(--super-dark-blue);
+  color: var(--light-blue);
+}
+
+.users__header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30%;
+}
+
+.posts__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 70%;
+}
+
 .card {
+  background-color: var(--light-blue);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--dark-blue);
+}
+
+.card-containers {
   display: flex;
 
   width: 80vw;
@@ -45,10 +76,8 @@ code {
 
   margin: 10px;
 
-  background-color: var(--light-blue);
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px var(--dark-blue);
 }
+
 
 .users__container{
   width: 30%;
