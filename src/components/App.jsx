@@ -20,8 +20,8 @@ const App = () => {
 
     return (
         <div className="container">
-            <ModalWindow />
             <h1 className="main-title">USERS & POSTS</h1>
+            <ModalWindow />
             <AppCard />
         </div>
     );

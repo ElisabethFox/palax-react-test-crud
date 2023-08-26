@@ -37,7 +37,7 @@ code {
   color: var(--super-dark-blue);
 }
 
-.card__headers{
+.card__headers {
   display: flex;
 
   height: 50px;
@@ -173,3 +173,4 @@ code {
 .post-icon:hover {
   color: var(--middle-blue)
 }
+

@@ -1,6 +1,9 @@
+import DeletePostModalWindow from "./DeletePostModalWindow";
+import './styles.css'
+
 const ModalWindow = () => {
     return (
-        <div></div>
+            <DeletePostModalWindow />
     );
 }
  

@@ -3,9 +3,9 @@ import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
 
 
-export const PostDataContext = createContext({});
+export const PostsContext = createContext({});
 
-const PostDataContextProvider = ({ children }) => {
+const PostsContextProvider = ({ children }) => {
   const dispatch = useDispatch();
 
   const getPostsData = async () => {
@@ -14,14 +14,19 @@ const PostDataContextProvider = ({ children }) => {
     return response;
   };
 
+  const deletePost = async (id) => {
+    const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
+    await axios.delete(path);
+  };
+
   return (
-    <PostDataContext.Provider value={{
+    <PostsContext.Provider value={{
       getPostsData,
     }}
     >
       {children}
-    </PostDataContext.Provider>
+    </PostsContext.Provider>
   );
 };
 
-export default PostDataContextProvider;
+export default PostsContextProvider;
