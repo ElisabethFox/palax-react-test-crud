@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { usePostsData } from '../../hooks';
+import { currentUser } from '../../selectors';
 import {
   closeModalWindow,
   setCurrentModalType,
@@ -14,7 +15,10 @@ import ModalButton from './ModalButton';
 const AddPostModalWindow = () => {
   const dispatch = useDispatch();
   const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
+  const currentUserData = useSelector(currentUser);
+  const { createNewPost } = usePostsData();
   const refModalInput = useRef(null);
+  const id = useSelector((state) => state.posts.ids.at(-1)) + 1;
 
   useEffect(() => {
     refModalInput?.current?.focus();
@@ -27,9 +31,11 @@ const AddPostModalWindow = () => {
   };
 
   const formik = useFormik({
-    initialValues: { name: '' },
+    initialValues: { title: '', postText: '' },
     onSubmit: async (values) => {
+      const { title, postText } = values;
       try {
+        createNewPost({id, title, userId: currentUserData.id, body: postText})
         handleCloseModalWindow();
       } catch (error) {
         console.log(111);
@@ -50,6 +56,7 @@ const AddPostModalWindow = () => {
       </div>
 
       <div className="modal-body">
+        <h6>Post Title</h6>
         <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
@@ -60,14 +67,27 @@ const AddPostModalWindow = () => {
               aria-label="Add"
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
-              isInvalid={formik.errors.name && formik.touched.name}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
-              "Add"
+              "Create title"
             </Form.Label>
-            <Form.Control.Feedback type="invalid" className="invalid-feedback">
-              {formik.errors.name}
-            </Form.Control.Feedback>
+          </div>
+
+          <div className="form-group">
+            <h6>Post Text</h6>
+            <Form.Control
+              as="textarea"
+              rows="5"
+              id="name"
+              type="text"
+              name="name"
+              aria-label="Add"
+              className="p-2 ps-2 form-control"
+              onChange={formik.handleChange}
+            />
+            <Form.Label htmlFor="name" className="form-label visually-hidden">
+              "Create post text"
+            </Form.Label>
           </div>
 
           <div className="d-flex justify-content-end">

@@ -77,9 +77,6 @@ const ChangePostModalWindow = () => {
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               "Change"
             </Form.Label>
-            <Form.Control.Feedback type="invalid" className="invalid-feedback">
-              {formik.errors.name}
-            </Form.Control.Feedback>
           </div>
 
           <div className="d-flex justify-content-end">

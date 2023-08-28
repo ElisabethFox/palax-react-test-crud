@@ -9,7 +9,6 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     addPost: postsAdapter.addOne,
-    addPosts: postsAdapter.addMany,
     deletePost: (state, { payload }) => {
       postsAdapter.removeOne(state, payload);
     },
@@ -22,6 +21,6 @@ const postsSlice = createSlice({
   },
 });
 
-export const { addPosts, deletePost, changePost } = postsSlice.actions;
+export const { addPost, deletePost, changePost } = postsSlice.actions;
 export { postsAdapter };
 export default postsSlice.reducer;
