@@ -3,9 +3,9 @@ import UsersContainer from "./users/UsersContainer";
 import UserInfo from "./UserInfo";
 import { useSelector } from "react-redux";
 import { currentUser } from "../selectors";
+import { FC } from "react";
 
-
-const AppCard = () => {
+const AppCard: FC = () => {
     const currentUserData = useSelector(currentUser) ?? null;
 
     return (

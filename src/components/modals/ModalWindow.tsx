@@ -3,8 +3,9 @@ import DeletePostModalWindow from './DeletePostModalWindow';
 import './styles.css';
 import ChangePostModalWindow from './ChangePostModalWindow';
 import AddPostModalWindow from './AddPostModalWindow';
+import { FC } from 'react';
 
-const ModalWindow = () => {
+const ModalWindow: FC = () => {
   const currentModalWindowType = useSelector((state) => state.modal.type);
 
   if (currentModalWindowType === 'delete') {

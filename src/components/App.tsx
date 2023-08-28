@@ -6,9 +6,10 @@ import fetchUsersData from "../fetchUsersData";
 import fetchPostsData from "../fetchPostsData";
 import { usePostsData } from "../hooks";
 import ModalWindow from "./modals/ModalWindow";
+import { FC } from "react";
 
 
-const App = () => {
+const App: FC = () => {
     const dispatch = useDispatch();
     const { getUsersData } = useUsersData();
     const { getPostsData } = usePostsData();

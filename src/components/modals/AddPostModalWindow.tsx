@@ -18,7 +18,7 @@ const AddPostModalWindow = () => {
   const currentUserData = useSelector(currentUser);
   const { createNewPost } = usePostsData();
   const refModalInput = useRef(null);
-  const id = useSelector((state) => state.posts.ids.at(-1)) + 1;
+  const id: number = useSelector((state) => state.posts.ids.at(-1)) + 1;
 
   useEffect(() => {
     refModalInput?.current?.focus();

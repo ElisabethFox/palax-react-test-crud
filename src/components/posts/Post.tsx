@@ -5,17 +5,24 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import { useDispatch } from 'react-redux';
+import { FC } from 'react';
+import IPost from '../../interfaces/PostInterface';
 
-const Post = ({ post }) => {
+interface PostProps {
+  post: IPost;
+}
+
+const Post: FC<PostProps> = ({ post }) => {
   const dispatch = useDispatch();
+  const { id, title, body } = post;
 
-  const handleChangePost = (id) => {
+  const handleChangePost = (id: number) => {
     dispatch(setCurrentModalType('change'));
     dispatch(setRelevantPost(id));
     dispatch(openModalWindow());
   };
 
-  const handleDeletePost = (id) => {
+  const handleDeletePost = (id: number) => {
     dispatch(setCurrentModalType('delete'));
     dispatch(setRelevantPost(id));
     dispatch(openModalWindow());
@@ -24,23 +31,23 @@ const Post = ({ post }) => {
   return (
     <li className="post">
       <div className="post__header">
-        <h5 className="post__title">{post.title.trim()}</h5>
+        <h5 className="post__title">{title.trim()}</h5>
         <div className="post-menu">
           <button
             className="post-icon"
-            onClick={() => handleChangePost(post.id)}
+            onClick={() => handleChangePost(id)}
           >
             <FaPencilAlt />
           </button>
           <button
             className="post-icon"
-            onClick={() => handleDeletePost(post.id)}
+            onClick={() => handleDeletePost(id)}
           >
             <FaTrashAlt />
           </button>
         </div>
       </div>
-      <p>{post.body.trim()}</p>
+      <p>{body.trim()}</p>
     </li>
   );
 };

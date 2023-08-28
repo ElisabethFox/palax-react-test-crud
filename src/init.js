@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux';
-import App from './components/App';
+import App from './components/App.tsx';
 import store from './slices';
 import UserDataContextProvider from './context/userDataContext';
 import PostsContextProvider from './context/postsContext';
