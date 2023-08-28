@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { deletePost } from '../slices/postsSlice';
+import { deletePost, changePost } from '../slices/postsSlice';
 
 
 export const PostsContext = createContext({});
@@ -15,17 +15,27 @@ const PostsContextProvider = ({ children }) => {
     return response;
   };
 
-  const deleteChangedPost = async (id) => {
+  const deleteCurrentPost = async (id) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.delete(path);
 
     dispatch(deletePost(id));
   };
 
+  const changeCurrentPost = async (id, data) => {
+    const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
+
+    await axios.put(path, data);
+
+    dispatch(changePost({ id, changes: { body: data }}));
+  };
+
+
   return (
     <PostsContext.Provider value={{
       getPostsData,
-      deleteChangedPost
+      deleteCurrentPost,
+      changeCurrentPost
     }}
     >
       {children}

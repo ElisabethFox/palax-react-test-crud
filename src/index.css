@@ -1,5 +1,5 @@
-@import './reset.css';
 @import 'bootstrap';
+@import './reset.css';
 
 :root {
   --super-dark-blue: #3B5998;
@@ -161,7 +161,7 @@ code {
 
   width: 95%;
 
-  margin: 10px;
+  margin: 10px 0 0 20px;
   padding: 5px;
   
   border: 1px groove var(--super-dark-blue);
@@ -183,6 +183,8 @@ code {
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
+
+  width: 60px;
 }
 
 .post-icon {
