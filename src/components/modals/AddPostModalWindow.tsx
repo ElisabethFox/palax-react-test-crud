@@ -2,7 +2,6 @@ import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
 import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
 import { usePostsData } from '../../hooks';
 import { currentUser } from '../../selectors';
 import {
@@ -11,14 +10,16 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
+import { useAppDispatch } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 
 const AddPostModalWindow = () => {
-  const dispatch = useDispatch();
-  const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
-  const currentUserData = useSelector(currentUser);
+  const dispatch = useAppDispatch();
+  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
+  const currentUserData = useAppSelector(currentUser);
   const { createNewPost } = usePostsData();
   const refModalInput = useRef(null);
-  const id: number = useSelector((state) => state.posts.ids.at(-1)) + 1;
+  const id: number = useAppSelector((state) => state.posts.ids.at(-1)) + 1;
 
   useEffect(() => {
     refModalInput?.current?.focus();

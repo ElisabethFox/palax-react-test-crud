@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
 import DeletePostModalWindow from './DeletePostModalWindow';
 import './styles.css';
 import ChangePostModalWindow from './ChangePostModalWindow';
 import AddPostModalWindow from './AddPostModalWindow';
 import { FC } from 'react';
+import { useAppSelector } from '../../hooks';
 
 const ModalWindow: FC = () => {
-  const currentModalWindowType = useSelector((state) => state.modal.type);
+  const currentModalWindowType = useAppSelector((state) => state.modal.type);
 
   if (currentModalWindowType === 'delete') {
     return <DeletePostModalWindow />;

@@ -2,7 +2,7 @@ import Form from 'react-bootstrap/Form';
 import { useFormik } from 'formik';
 import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+
 import ModalButton from './ModalButton';
 import {
   closeModalWindow,
@@ -11,15 +11,17 @@ import {
 } from '../../slices/modalWindowsSlice';
 import { postsSelector } from '../../selectors';
 import { usePostsData } from '../../hooks';
+import { useAppDispatch } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 
 const ChangePostModalWindow = () => {
-  const dispatch = useDispatch();
-  const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
-  const relevantPostId = useSelector((state) => state.modal.relevantPost);
+  const dispatch = useAppDispatch();
+  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
+  const relevantPostId = useAppSelector((state) => state.modal.relevantPost);
   const refModalInput = useRef(null);
   const { changeCurrentPost } = usePostsData();
 
-  const posts = useSelector(postsSelector.selectAll);
+  const posts = useAppSelector(postsSelector.selectAll);
   const currentPost = posts.find((post) => post.id === relevantPostId);
 
   useEffect(() => {

@@ -1,12 +1,11 @@
 import User from './User';
 import { usersSelector } from '../../selectors';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { setCurrentUser } from '../../slices/usersSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 
 const UsersContainer = () => {
-  const dispatch = useDispatch();
-  const users = useSelector(usersSelector.selectAll) ?? null;
+  const dispatch = useAppDispatch();
+  const users = useAppSelector(usersSelector.selectAll) ?? null;
 
   const handleSetCurrentUser = async (id: number) => {
     dispatch(setCurrentUser(id));

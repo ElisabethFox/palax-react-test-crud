@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FC, ComponentType, createContext } from 'react';
-import { useDispatch } from 'react-redux';
 import { addPost, deletePost, changePost } from '../slices/postsSlice';
+import { useAppDispatch } from '../hooks';
 
 interface PostData {
   id?: number;
@@ -29,7 +29,7 @@ interface PostsContextProviderProps {
 };
 
 const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const getPostsData = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');

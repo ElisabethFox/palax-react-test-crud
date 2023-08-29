@@ -1,12 +1,12 @@
 import PostsContainer from './posts/PostsContainer';
 import UsersContainer from './users/UsersContainer';
 import AppCardHeader from './AppCardHeader';
-import { useSelector } from 'react-redux';
 import { currentUser } from '../selectors';
 import { FC } from 'react';
+import { useAppSelector } from '../hooks';
 
 const AppCard: FC = () => {
-  const currentUserData = useSelector(currentUser) ?? null;
+  const currentUserData = useAppSelector(currentUser) ?? null;
 
   return (
     <div className="app-card">

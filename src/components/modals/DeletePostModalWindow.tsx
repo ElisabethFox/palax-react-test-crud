@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from 'react-bootstrap';
 import { usePostsData } from '../../hooks';
 import {
@@ -7,12 +6,14 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
+import { useAppDispatch } from '../../hooks';
+import { useAppSelector } from '../../hooks';
 
 const DeletePostModalWindow = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { deleteCurrentPost } = usePostsData();
-  const relevantPostId = useSelector((state) => state.modal.relevantPost);
-  const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
+  const relevantPostId = useAppSelector((state) => state.modal.relevantPost);
+  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
 
   const handleDeletePost = (id: number) => {
     try {

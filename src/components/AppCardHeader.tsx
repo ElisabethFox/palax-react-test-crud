@@ -1,16 +1,16 @@
 import { FaRegEdit } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
 import { setCurrentModalType } from '../slices/modalWindowsSlice';
 import { openModalWindow } from '../slices/modalWindowsSlice';
 import { IUser } from '../interfaces';
 import { FC } from 'react';
+import { useAppDispatch } from '../hooks';
 
 interface AddCardHeaderProps {
   user: IUser;
 }
 
 const AppCardHeader: FC<AddCardHeaderProps> = ({ user }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { username, name, website } = user;
 
   const handleClick = () => {

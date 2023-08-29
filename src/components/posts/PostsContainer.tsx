@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
 import { currentUser, postsSelector } from '../../selectors';
 import Post from './Post';
+import { useAppSelector } from '../../hooks';
 
 const PostsContainer = () => {
-  const posts = useSelector(postsSelector.selectAll) ?? null;
-  const currentUserData = useSelector(currentUser);
+  const posts = useAppSelector(postsSelector.selectAll) ?? null;
+  const currentUserData = useAppSelector(currentUser);
   const currentUserPosts = posts.filter(
     (post) => post.userId === currentUserData?.id
   );

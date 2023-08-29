@@ -1,9 +1,9 @@
 import cn from 'classnames';
-import { useSelector } from 'react-redux';
 import { currentUser } from '../../selectors';
+import { useAppSelector } from '../../hooks';
 
 const User = ({ user, onClick }) => {
-  const currentUserData = useSelector(currentUser);
+  const currentUserData = useAppSelector(currentUser);
   const { username, id } = user;
 
   const isActive = () => id === currentUserData?.id;
