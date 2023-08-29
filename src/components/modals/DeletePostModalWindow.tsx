@@ -8,6 +8,7 @@ import {
 import ModalButton from './ModalButton';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
+import { toast } from 'react-toastify';
 
 const DeletePostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -19,8 +20,9 @@ const DeletePostModalWindow = () => {
     try {
       deleteCurrentPost(id);
       dispatch(closeModalWindow());
+      toast.success('Post Deleted!');
     } catch (error) {
-      console.log('!!!!');
+      toast.error('Network Error');
     }
   };
 

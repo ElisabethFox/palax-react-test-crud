@@ -12,6 +12,7 @@ import {
 import ModalButton from './ModalButton';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
+import { toast } from 'react-toastify';
 
 const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -39,9 +40,10 @@ const AddPostModalWindow = () => {
         if (currentUserData !== null) {
           createNewPost({id: '1', title, userId: currentUserData.id, body: postText})
           handleCloseModalWindow();
+          toast.success('Post Created!');
         }
       } catch (error) {
-        console.log(111);
+        toast.error('Network Error');
       }
     },
   });
@@ -60,7 +62,7 @@ const AddPostModalWindow = () => {
 
       <div className="modal-body">
         <h6>Post Title</h6>
-        <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
+        <Form className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
               ref={refModalInput}

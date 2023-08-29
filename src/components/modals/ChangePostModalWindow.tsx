@@ -13,6 +13,7 @@ import { postsSelector } from '../../selectors';
 import { usePostsData } from '../../hooks';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
+import { toast } from 'react-toastify';
 
 const ChangePostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -42,9 +43,10 @@ const ChangePostModalWindow = () => {
         if (currentPost !== null) {
           changeCurrentPost(currentPost.id, postText);
           handleCloseModalWindow();
+          toast.success('Post Changed!');
         }
       } catch (error) {
-        console.log('!!!!!!!!!!!!!');
+        toast.error('Network Error');
       }
     },
   });
