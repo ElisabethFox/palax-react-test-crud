@@ -18,11 +18,11 @@ const ChangePostModalWindow = () => {
   const dispatch = useAppDispatch();
   const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
   const relevantPostId = useAppSelector((state) => state.modal.relevantPost);
-  const refModalInput = useRef(null);
+  const refModalInput = useRef<HTMLTextAreaElement>(null);
   const { changeCurrentPost } = usePostsData();
 
   const posts = useAppSelector(postsSelector.selectAll);
-  const currentPost = posts.find((post) => post.id === relevantPostId);
+  const currentPost = posts.find((post) => post.id === relevantPostId) || null;
 
   useEffect(() => {
     refModalInput?.current?.focus();
@@ -30,17 +30,19 @@ const ChangePostModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(null));
-    dispatch(setRelevantPost(null));
+    dispatch(setCurrentModalType(''));
+    dispatch(setRelevantPost(''));
   };
 
   const formik = useFormik({
-    initialValues: { postText: currentPost.body },
+    initialValues: { postText: currentPost!.body },
     onSubmit: async (values) => {
       const { postText } = values;
       try {
-        changeCurrentPost(currentPost.id, postText);
-        handleCloseModalWindow();
+        if (currentPost !== null) {
+          changeCurrentPost(currentPost.id, postText);
+          handleCloseModalWindow();
+        }
       } catch (error) {
         console.log('!!!!!!!!!!!!!');
       }
@@ -60,12 +62,12 @@ const ChangePostModalWindow = () => {
       </div>
 
       <div className="modal-body">
-        <h6>{currentPost.title}</h6>
+        <h6>{currentPost!.title}</h6>
         <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
               as="textarea"
-              rows="5"
+              rows={5}
               ref={refModalInput}
               id="postText"
               type="text"
@@ -77,7 +79,7 @@ const ChangePostModalWindow = () => {
               value={formik.values.postText}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
-              "Change"
+              `Change`
             </Form.Label>
           </div>
 
@@ -85,7 +87,7 @@ const ChangePostModalWindow = () => {
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
             <ModalButton
               title="Change"
-              onClick={formik.handleSubmit}
+              onClick={handleCloseModalWindow}
               priority
             />
           </div>

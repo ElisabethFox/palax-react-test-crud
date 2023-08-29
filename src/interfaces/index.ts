@@ -18,8 +18,14 @@ export interface IModalButton {
   priority?: boolean;
 }
 
-export interface IUsersState {
-  currentUserId: string | null;
-  entities: Record<string, IUser>;
-  ids: string[];
+export interface IModalWindow {
+  isOpen: boolean;
+  type: string;
+  relevantPost: string;
 }
+
+// export interface IUsersState {
+//   currentUserId: string | null;
+//   entities: Record<string, IUser>;
+//   ids: string[];
+// }

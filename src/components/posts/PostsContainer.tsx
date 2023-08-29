@@ -3,7 +3,7 @@ import Post from './Post';
 import { useAppSelector } from '../../hooks';
 
 const PostsContainer = () => {
-  const posts = useAppSelector(postsSelector.selectAll) ?? null;
+  const posts = useAppSelector(postsSelector.selectAll);
   const currentUserData = useAppSelector(currentUser);
   const currentUserPosts = posts.filter(
     (post) => post.userId === currentUserData?.id

@@ -8,7 +8,7 @@ import { IUser } from '../interfaces';
 
 const usersAdapter = createEntityAdapter<IUser>({});
 const initialState = usersAdapter.getInitialState({
-  currentUserId: '',
+  currentUserId: '1',
 });
 
 const usersSlice = createSlice({

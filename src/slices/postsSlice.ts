@@ -10,7 +10,7 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     addPost: postsAdapter.addOne,
-    deletePost: (state, { payload }: PayloadAction<number>) => {
+    deletePost: (state, { payload }: PayloadAction<string>) => {
       postsAdapter.removeOne(state, payload);
     },
     changePost: postsAdapter.updateOne,

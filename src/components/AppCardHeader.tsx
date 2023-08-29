@@ -4,21 +4,19 @@ import { openModalWindow } from '../slices/modalWindowsSlice';
 import { IUser } from '../interfaces';
 import { FC } from 'react';
 import { useAppDispatch } from '../hooks';
+import { useAppSelector } from '../hooks';
+import { currentUser } from '../selectors';
 
-interface AddCardHeaderProps {
-  user: IUser;
-}
-
-const AppCardHeader: FC<AddCardHeaderProps> = ({ user }) => {
+const AppCardHeader: FC = () => {
   const dispatch = useAppDispatch();
-  const { username, name, website } = user;
+  const currentUserData = useAppSelector(currentUser) ?? null;
 
   const handleClick = () => {
     dispatch(setCurrentModalType('add'));
     dispatch(openModalWindow());
   };
 
-  if (user === null) {
+  if (currentUserData === null) {
     return (
       <div className="user-info">
         <p>Change user to watch their posts</p>
@@ -30,10 +28,11 @@ const AppCardHeader: FC<AddCardHeaderProps> = ({ user }) => {
     <div className="user-info">
       <ul className="user-info__list">
         <li>
-          <b>Posts created by:</b> {username} ({name})
+          <b>Posts created by:</b> {currentUserData.username} (
+          {currentUserData.name})
         </li>
         <li>
-          <b>Website:</b> {website}
+          <b>Website:</b> {currentUserData.website}
         </li>
       </ul>
 

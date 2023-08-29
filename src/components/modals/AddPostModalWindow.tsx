@@ -16,9 +16,9 @@ import { useAppSelector } from '../../hooks';
 const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
   const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
-  const currentUserData = useAppSelector(currentUser);
+  const currentUserData = useAppSelector(currentUser) ?? null;
   const { createNewPost } = usePostsData();
-  const refModalInput = useRef(null);
+  const refModalInput = useRef<HTMLInputElement>(null);
   const id = useAppSelector((state) => state.posts.ids.at(-1));
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const AddPostModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(null));
-    dispatch(setRelevantPost(null));
+    dispatch(setCurrentModalType(''));
+    dispatch(setRelevantPost(''));
   };
 
   const formik = useFormik({
@@ -36,8 +36,10 @@ const AddPostModalWindow = () => {
     onSubmit: async (values) => {
       const { title, postText } = values;
       try {
-        createNewPost({id, title, userId: currentUserData.id, body: postText})
-        handleCloseModalWindow();
+        if (currentUserData !== null) {
+          createNewPost({id: '1', title, userId: currentUserData.id, body: postText})
+          handleCloseModalWindow();
+        }
       } catch (error) {
         console.log(111);
       }
@@ -70,7 +72,7 @@ const AddPostModalWindow = () => {
               onChange={formik.handleChange}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
-              "Create title"
+              `Create title`
             </Form.Label>
           </div>
 
@@ -78,7 +80,7 @@ const AddPostModalWindow = () => {
             <h6>Post Text</h6>
             <Form.Control
               as="textarea"
-              rows="5"
+              rows={5}
               id="name"
               type="text"
               name="name"
@@ -87,7 +89,7 @@ const AddPostModalWindow = () => {
               onChange={formik.handleChange}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
-              "Create post text"
+              `Create post text`
             </Form.Label>
           </div>
 
@@ -95,7 +97,7 @@ const AddPostModalWindow = () => {
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
             <ModalButton
               title="Create"
-              onClick={formik.handleSubmit}
+              onClick={handleCloseModalWindow}
               priority
             />
           </div>
