@@ -18,7 +18,7 @@ export const PostsContext = createContext<PostsContextValue>({
 
 interface PostsContextProviderProps {
   children: ComponentType;
-};
+}
 
 const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
@@ -34,7 +34,7 @@ const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.put(path, data);
 
-    dispatch(changePost({ id, changes: { body: data }}));
+    dispatch(changePost({ id, changes: { body: data } }));
   };
 
   const createNewPost = async (data: IPost) => {
@@ -44,13 +44,13 @@ const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
     dispatch(addPost(data));
   };
 
-
   return (
-    <PostsContext.Provider value={{
-      deleteCurrentPost,
-      changeCurrentPost,
-      createNewPost,
-    }}
+    <PostsContext.Provider
+      value={{
+        deleteCurrentPost,
+        changeCurrentPost,
+        createNewPost,
+      }}
     >
       {children}
     </PostsContext.Provider>

@@ -20,7 +20,7 @@ const ModalWindow: FC = () => {
     return <AddPostModalWindow />;
   }
 
-  return;
+  return null;
 };
 
 export default ModalWindow;
