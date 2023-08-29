@@ -6,7 +6,7 @@ import { FC } from 'react';
 import { useAppSelector } from '../hooks';
 
 const AppCard: FC = () => {
-  const currentUserData = useAppSelector(currentUser) ?? null;
+  const currentUserData = useAppSelector(currentUser);
 
   return (
     <div className="app-card">

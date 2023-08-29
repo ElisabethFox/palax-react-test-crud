@@ -11,14 +11,12 @@ interface PostData {
 }
 
 interface PostsContextValue {
-  getPostsData: () => Promise<any>;
   deleteCurrentPost: (id: number) => Promise<void>;
   changeCurrentPost: (id: number, data: PostData) => Promise<void>;
   createNewPost: (data: PostData) => Promise<void>;
 }
 
 export const PostsContext = createContext<PostsContextValue>({
-  getPostsData: () => Promise.resolve(),
   deleteCurrentPost: async () => {},
   changeCurrentPost: async () => {},
   createNewPost: async () => {},
@@ -30,11 +28,6 @@ interface PostsContextProviderProps {
 
 const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
-
-  // const getPostsData = async () => {
-  //   const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-  //   return response;
-  // };
 
   const deleteCurrentPost = async (id: number) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
@@ -60,7 +53,6 @@ const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
 
   return (
     <PostsContext.Provider value={{
-      // getPostsData,
       deleteCurrentPost,
       changeCurrentPost,
       createNewPost
