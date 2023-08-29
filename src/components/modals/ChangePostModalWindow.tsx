@@ -63,7 +63,7 @@ const ChangePostModalWindow = () => {
 
       <div className="modal-body">
         <h6>{currentPost!.title}</h6>
-        <Form onSubmit={formik.handleSubmit} className="py-1 rounded-2">
+        <Form className="py-1 rounded-2">
           <div className="form-group">
             <Form.Control
               as="textarea"
@@ -87,7 +87,7 @@ const ChangePostModalWindow = () => {
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
             <ModalButton
               title="Change"
-              onClick={handleCloseModalWindow}
+              onClick={formik.handleSubmit}
               priority
             />
           </div>

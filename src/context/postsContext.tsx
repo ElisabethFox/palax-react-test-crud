@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FC, ComponentType, createContext, ReactNode } from 'react';
+import {ComponentType, createContext, ReactElement } from 'react';
 import { addPost, deletePost, changePost } from '../slices/postsSlice';
 import { useAppDispatch } from '../hooks';
 import { IPost } from '../interfaces';
@@ -17,7 +17,7 @@ export const PostsContext = createContext<PostsContextValue>({
 });
 
 interface PostsContextProviderProps {
-  children: React.ReactNode;
+  children: ReactElement;
 }
 
 const PostsContextProvider = ({ children }: PostsContextProviderProps) => {

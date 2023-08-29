@@ -97,7 +97,7 @@ const AddPostModalWindow = () => {
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
             <ModalButton
               title="Create"
-              onClick={handleCloseModalWindow}
+              onClick={formik.handleSubmit}
               priority
             />
           </div>
