@@ -1,6 +1,6 @@
 import PostsContainer from './posts/PostsContainer';
 import UsersContainer from './users/UsersContainer';
-import UserInfo from './posts/PostsContainerHeader';
+import AppCardHeader from './AppCardHeader';
 import { useSelector } from 'react-redux';
 import { currentUser } from '../selectors';
 import { FC } from 'react';
@@ -15,7 +15,7 @@ const AppCard: FC = () => {
           <h5>USERNAMES</h5>
         </div>
         <div className="posts__header">
-          <UserInfo user={currentUserData} />
+          <AppCardHeader user={currentUserData} />
         </div>
       </div>
       <div className="card-containers">

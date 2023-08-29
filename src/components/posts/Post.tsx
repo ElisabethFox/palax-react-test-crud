@@ -6,7 +6,7 @@ import {
 } from '../../slices/modalWindowsSlice';
 import { useDispatch } from 'react-redux';
 import { FC } from 'react';
-import IPost from '../../interfaces/PostInterface';
+import { IPost } from '../../interfaces';
 
 interface PostProps {
   post: IPost;
@@ -33,16 +33,10 @@ const Post: FC<PostProps> = ({ post }) => {
       <div className="post__header">
         <h5 className="post__title">{title.trim()}</h5>
         <div className="post-menu">
-          <button
-            className="post-icon"
-            onClick={() => handleChangePost(id)}
-          >
+          <button className="post-icon" onClick={() => handleChangePost(id)}>
             <FaPencilAlt />
           </button>
-          <button
-            className="post-icon"
-            onClick={() => handleDeletePost(id)}
-          >
+          <button className="post-icon" onClick={() => handleDeletePost(id)}>
             <FaTrashAlt />
           </button>
         </div>
