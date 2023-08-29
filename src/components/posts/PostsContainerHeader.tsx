@@ -1,7 +1,7 @@
 import { FaRegEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { setCurrentModalType } from '../slices/modalWindowsSlice';
-import { openModalWindow } from '../slices/modalWindowsSlice';
+import { setCurrentModalType } from '../../slices/modalWindowsSlice';
+import { openModalWindow } from '../../slices/modalWindowsSlice';
 
 const UserInfo = ({ user }) => {
   const dispatch = useDispatch();

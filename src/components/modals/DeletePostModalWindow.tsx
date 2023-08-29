@@ -14,7 +14,7 @@ const DeletePostModalWindow = () => {
   const relevantPostId = useSelector((state) => state.modal.relevantPost);
   const isModalWindowOpen = useSelector((state) => state.modal.isOpen);
 
-  const handleDeletePost = (id) => {
+  const handleDeletePost = (id: number) => {
     try {
       deleteCurrentPost(id);
       dispatch(closeModalWindow());

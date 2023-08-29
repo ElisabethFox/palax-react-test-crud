@@ -8,11 +8,8 @@ const UsersContainer = () => {
   const dispatch = useDispatch();
   const users = useSelector(usersSelector.selectAll) ?? null;
 
-  // const { getPostsData } = usePostsData();
-
-  const handleSetCurrentUser = async (id) => {
+  const handleSetCurrentUser = async (id: number) => {
     dispatch(setCurrentUser(id));
-    // dispatch(fetchPostsData(getPostsData(id)));
   };
 
   return (
