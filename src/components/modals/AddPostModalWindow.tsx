@@ -29,7 +29,7 @@ const AddPostModalWindow = () => {
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
     dispatch(setCurrentModalType(''));
-    dispatch(setRelevantPost(''));
+    dispatch(setRelevantPost(0));
   };
 
   const formik = useFormik({
