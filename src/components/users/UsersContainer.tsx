@@ -7,7 +7,7 @@ const UsersContainer = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(usersSelector.selectAll) ?? null;
 
-  const handleSetCurrentUser = async (id: string) => {
+  const handleSetCurrentUser = async (id: number) => {
     dispatch(setCurrentUser(id));
   };
 

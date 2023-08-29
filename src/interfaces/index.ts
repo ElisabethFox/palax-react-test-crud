@@ -1,12 +1,12 @@
 export interface IPost {
   id: number;
-  userId: string;
+  userId: number;
   title: string;
   body: string;
 }
 
 export interface IUser {
-  id: string;
+  id: number;
   username: string;
   name: string;
   website: string;
@@ -23,9 +23,3 @@ export interface IModalWindow {
   type: string;
   relevantPost: string;
 }
-
-// export interface IUsersState {
-//   currentUserId: string | null;
-//   entities: Record<string, IUser>;
-//   ids: string[];
-// }

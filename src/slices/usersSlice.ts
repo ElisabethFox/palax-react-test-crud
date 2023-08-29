@@ -15,10 +15,10 @@ const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setCurrentUser: (state, { payload }: PayloadAction<string>) => {
+    setCurrentUser: (state, { payload }: PayloadAction<number>) => {
       state.currentUserId = payload;
     },
-    removeUser: (state, { payload }: PayloadAction<string>) => {
+    removeUser: (state, { payload }: PayloadAction<number>) => {
       if (state.currentUserId === payload) {
         state.currentUserId = '';
       }
