@@ -1,8 +1,15 @@
 import cn from 'classnames';
 import { currentUser } from '../../selectors';
 import { useAppSelector } from '../../hooks';
+import { FC } from 'react';
+import { IUser } from '../../interfaces';
 
-const User = ({ user, onClick }) => {
+interface UserProps {
+  user: IUser;
+  onClick: () => void;
+}
+
+const User: FC<UserProps> = ({ user, onClick }) => {
   const currentUserData = useAppSelector(currentUser);
   const { username, id } = user;
 

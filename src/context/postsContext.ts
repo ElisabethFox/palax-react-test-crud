@@ -31,10 +31,10 @@ interface PostsContextProviderProps {
 const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
 
-  const getPostsData = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    return response;
-  };
+  // const getPostsData = async () => {
+  //   const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+  //   return response;
+  // };
 
   const deleteCurrentPost = async (id: number) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
@@ -60,7 +60,7 @@ const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
 
   return (
     <PostsContext.Provider value={{
-      getPostsData,
+      // getPostsData,
       deleteCurrentPost,
       changeCurrentPost,
       createNewPost
