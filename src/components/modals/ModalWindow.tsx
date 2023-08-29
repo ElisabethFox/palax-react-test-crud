@@ -19,6 +19,8 @@ const ModalWindow: FC = () => {
   if (currentModalWindowType === 'add') {
     return <AddPostModalWindow />;
   }
+
+  return;
 };
 
 export default ModalWindow;

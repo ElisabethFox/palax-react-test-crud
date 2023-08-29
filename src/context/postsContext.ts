@@ -1,11 +1,34 @@
 import axios from 'axios';
-import { createContext } from 'react';
+import { FC, ComponentType, createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPost, deletePost, changePost } from '../slices/postsSlice';
 
-export const PostsContext = createContext({});
+interface PostData {
+  id?: number;
+  title: string;
+  body: string;
+  userId: number;
+}
 
-const PostsContextProvider = ({ children }) => {
+interface PostsContextValue {
+  getPostsData: () => Promise<any>;
+  deleteCurrentPost: (id: number) => Promise<void>;
+  changeCurrentPost: (id: number, data: PostData) => Promise<void>;
+  createNewPost: (data: PostData) => Promise<void>;
+}
+
+export const PostsContext = createContext<PostsContextValue>({
+  getPostsData: () => Promise.resolve(),
+  deleteCurrentPost: async () => {},
+  changeCurrentPost: async () => {},
+  createNewPost: async () => {},
+});
+
+interface PostsContextProviderProps {
+  children: ComponentType;
+};
+
+const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
   const dispatch = useDispatch();
 
   const getPostsData = async () => {
@@ -20,7 +43,7 @@ const PostsContextProvider = ({ children }) => {
     dispatch(deletePost(id));
   };
 
-  const changeCurrentPost = async (id: number, data: any) => {
+  const changeCurrentPost = async (id: number, data: PostData) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.put(path, data);
 

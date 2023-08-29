@@ -1,9 +1,13 @@
 import axios from 'axios';
-import { createContext } from 'react';
+import React, { FC, createContext } from 'react';
 
 export const UserDataContext = createContext({});
 
-const UserDataContextProvider = ({ children }) => {
+interface UserContextProviderProps {
+  children: React.ReactNode;
+}
+
+const UserDataContextProvider: FC<UserContextProviderProps> = ({ children }) => {
 
   const getUsersData = async () => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/users');

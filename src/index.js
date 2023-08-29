@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import init from './init';
+import init from './init.ts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(init());

@@ -17,3 +17,9 @@ export interface IModalButton {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   priority?: boolean;
 }
+
+export interface IUsersState {
+  currentUserId: string | null;
+  entities: Record<string, IUser>;
+  ids: string[];
+}
