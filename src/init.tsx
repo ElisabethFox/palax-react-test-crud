@@ -1,18 +1,15 @@
 import { Provider } from 'react-redux';
-import App from './components/App.js';
-import store from './slices/index.js';
-// import UserDataContextProvider from './context/userDataContext.js';
+import App from './components/App.tsx';
+import store from './slices';
 import PostsContextProvider from './context/postsContext.js';
-import {FC} from "react";
+import { FC } from 'react';
 
 const init: FC = () => {
   return (
     <Provider store={store}>
-      {/* <UserDataContextProvider> */}
-        <PostsContextProvider>
-          <App />
-        </PostsContextProvider>
-      {/* </UserDataContextProvider> */}
+      <PostsContextProvider>
+        <App />
+      </PostsContextProvider>
     </Provider>
   );
 };

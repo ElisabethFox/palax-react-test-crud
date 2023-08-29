@@ -4,15 +4,15 @@ import { addPost, deletePost, changePost } from '../slices/postsSlice';
 import { useAppDispatch } from '../hooks';
 
 interface PostData {
-  id?: number;
+  id?: string;
   title: string;
   body: string;
-  userId: number;
+  userId: string;
 }
 
 interface PostsContextValue {
-  deleteCurrentPost: (id: number) => Promise<void>;
-  changeCurrentPost: (id: number, data: PostData) => Promise<void>;
+  deleteCurrentPost: (id: string) => Promise<void>;
+  changeCurrentPost: (id: string, data: PostData) => Promise<void>;
   createNewPost: (data: PostData) => Promise<void>;
 }
 
@@ -29,14 +29,14 @@ interface PostsContextProviderProps {
 const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
   const dispatch = useAppDispatch();
 
-  const deleteCurrentPost = async (id: number) => {
+  const deleteCurrentPost = async (id: string) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.delete(path);
 
     dispatch(deletePost(id));
   };
 
-  const changeCurrentPost = async (id: number, data: PostData) => {
+  const changeCurrentPost = async (id: string, data: PostData) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.put(path, data);
 

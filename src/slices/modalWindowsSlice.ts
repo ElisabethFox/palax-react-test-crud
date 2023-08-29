@@ -1,7 +1,17 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import {
+  createEntityAdapter,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+
+interface ModalWindowState {
+  isOpen: boolean;
+  type: string | null;
+  relevantPost: string | null;
+}
 
 const modalWindowAdapter = createEntityAdapter();
-const initialState = modalWindowAdapter.getInitialState({
+const initialState: ModalWindowState = modalWindowAdapter.getInitialState({
   isOpen: false,
   type: null,
   relevantPost: null,
@@ -17,11 +27,11 @@ const modalWindowSlice = createSlice({
     closeModalWindow: (state) => {
       state.isOpen = false;
     },
-    setCurrentModalType: (state, { payload }) => {
-      state.type = payload;
+    setCurrentModalType: (state, action: PayloadAction<string | null>) => {
+      state.type = action.payload;
     },
-    setRelevantPost: (state, { payload }) => {
-      state.relevantPost = payload;
+    setRelevantPost: (state, action: PayloadAction<string | null>) => {
+      state.relevantPost = action.payload;
     },
   },
 });

@@ -16,13 +16,13 @@ const Post: FC<PostProps> = ({ post }) => {
   const dispatch = useAppDispatch();
   const { id, title, body } = post;
 
-  const handleChangePost = (id: number): void => {
+  const handleChangePost = (id: string): void => {
     dispatch(setCurrentModalType('change'));
     dispatch(setRelevantPost(id));
     dispatch(openModalWindow());
   };
 
-  const handleDeletePost = (id: number): void => {
+  const handleDeletePost = (id: string): void => {
     dispatch(setCurrentModalType('delete'));
     dispatch(setRelevantPost(id));
     dispatch(openModalWindow());

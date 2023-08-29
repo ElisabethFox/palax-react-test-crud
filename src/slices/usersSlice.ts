@@ -1,12 +1,16 @@
-import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import fetchUsersData from '../fetchUsersData';
+import {
+  createEntityAdapter,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import fetchUsersData from '../thunks/fetchUsersData';
 import { IUser, IUsersState } from '../interfaces';
 
 const usersAdapter = createEntityAdapter<IUser>({
   selectId: (user: IUser) => user.id,
 });
 
-const initialState: IUsersState = usersAdapter.getInitialState({ 
+const initialState: IUsersState = usersAdapter.getInitialState({
   currentUserId: null,
 });
 

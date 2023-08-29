@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IUser } from './interfaces';
+import { IUser } from '../interfaces';
 
 const fetchUsersData = createAsyncThunk<
   IUser[],

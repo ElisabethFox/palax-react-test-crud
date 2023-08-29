@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IPost } from './interfaces';
+import { IPost } from '../interfaces';
 
 const fetchPostsData = createAsyncThunk<
   IPost[],

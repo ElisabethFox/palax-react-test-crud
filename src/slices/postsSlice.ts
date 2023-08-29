@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
-import fetchPostsData from '../fetchPostsData';
+import fetchPostsData from '../thunks/fetchPostsData';
 
 const postsAdapter = createEntityAdapter();
 const initialState = postsAdapter.getInitialState();

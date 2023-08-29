@@ -1,18 +1,11 @@
 import { usersAdapter } from "../slices/usersSlice";
-import store from "../slices";
+import { RootState } from "../slices";
 
-interface store {
-  users any(): void {
-    currentUserId: number;
-  };
-  posts: any;
-}
+const usersSelector = usersAdapter.getSelectors((state: RootState) => state.users);
+const postsSelector = usersAdapter.getSelectors((state: RootState) => state.posts);
+const postsIdsSelector = usersAdapter.getSelectors((state: RootState) => state.posts);
 
-const usersSelector = usersAdapter.getSelectors((state: store) => state.users);
-const postsSelector = usersAdapter.getSelectors((state: store) => state.posts);
-const postsIdsSelector = usersAdapter.getSelectors((state: store) => state.posts);
-
-const currentUser = (state: store) => (
+const currentUser = (state: RootState) => (
   usersSelector.selectById(state, state.users.currentUserId)
 );
 
