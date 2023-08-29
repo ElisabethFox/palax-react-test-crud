@@ -7,7 +7,7 @@ import {
 import fetchUsersData from '../thunks/fetchUsersData';
 import { IUser } from '../interfaces';
 
-const usersAdapter = createEntityAdapter<IUser>({});
+const usersAdapter = createEntityAdapter<IUser>();
 
 interface UsersState extends EntityState<IUser> {
   currentUserId: number | null;

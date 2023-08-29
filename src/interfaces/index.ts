@@ -18,8 +18,4 @@ export interface IModalButton {
   priority?: boolean;
 }
 
-export interface IModalWindow {
-  isOpen: boolean;
-  type: string;
-  relevantPostId: number;
-}
+export interface IModalWindow {}

@@ -18,7 +18,7 @@ import { toast } from 'react-toastify';
 const ChangePostModalWindow = () => {
   const dispatch = useAppDispatch();
   const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
-  const relevantPostId = useAppSelector((state) => state.modal.relevantPost);
+  const relevantPostId = useAppSelector((state) => state.modal.relevantPostId);
   const refModalInput = useRef<HTMLTextAreaElement>(null);
   const { changeCurrentPost } = usePostsData();
 
@@ -31,8 +31,8 @@ const ChangePostModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(''));
-    dispatch(setRelevantPost(''));
+    dispatch(setCurrentModalType(null));
+    dispatch(setRelevantPost(null));
   };
 
   const formik = useFormik({
