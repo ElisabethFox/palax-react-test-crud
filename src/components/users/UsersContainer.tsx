@@ -4,7 +4,7 @@ import { setCurrentUser } from '../../slices/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { FC } from 'react';
 
-const UsersContainer: FC = () => {
+const UsersContainer = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(usersSelector.selectAll) ?? null;
 

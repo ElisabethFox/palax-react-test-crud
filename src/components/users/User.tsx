@@ -9,7 +9,7 @@ interface UserProps {
   onClick: () => void;
 }
 
-const User: FC<UserProps> = ({ user, onClick }) => {
+const User = ({ user, onClick }: UserProps) => {
   const currentUserData = useAppSelector(currentUser);
   const { username, id } = user;
 

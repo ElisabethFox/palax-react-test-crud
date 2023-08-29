@@ -1,8 +1,7 @@
 import cn from 'classnames';
-import { FC } from 'react';
 import { IModalButton } from '../../interfaces';
 
-const ModalButton: FC<IModalButton> = ({ title, onClick, priority = null }) => {
+const ModalButton = ({ title, onClick, priority = false }: IModalButton) => {
   const ModalButttonClasses = cn('modal-button', {
     'high-priority': priority,
   });

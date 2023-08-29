@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FC, ComponentType, createContext } from 'react';
+import { FC, ComponentType, createContext, ReactNode } from 'react';
 import { addPost, deletePost, changePost } from '../slices/postsSlice';
 import { useAppDispatch } from '../hooks';
 import { IPost } from '../interfaces';
@@ -17,10 +17,10 @@ export const PostsContext = createContext<PostsContextValue>({
 });
 
 interface PostsContextProviderProps {
-  children: ComponentType;
+  children: React.ReactNode;
 }
 
-const PostsContextProvider: FC<PostsContextProviderProps> = ({ children }) => {
+const PostsContextProvider = ({ children }: PostsContextProviderProps) => {
   const dispatch = useAppDispatch();
 
   const deleteCurrentPost = async (id: string) => {

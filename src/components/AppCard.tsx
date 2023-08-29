@@ -1,9 +1,8 @@
 import PostsContainer from './posts/PostsContainer';
 import UsersContainer from './users/UsersContainer';
 import AppCardHeader from './AppCardHeader';
-import { FC } from 'react';
 
-const AppCard: FC = () => {
+const AppCard = () => {
   return (
     <div className="app-card">
       <div className="card__headers">

@@ -3,10 +3,9 @@ import AppCard from './AppCard';
 import fetchUsersData from '../thunks/fetchUsersData';
 import fetchPostsData from '../thunks/fetchPostsData';
 import ModalWindow from './modals/ModalWindow';
-import { FC } from 'react';
 import { useAppDispatch } from '../hooks';
 
-const App: FC = () => {
+const App = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

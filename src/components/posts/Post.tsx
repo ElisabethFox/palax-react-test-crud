@@ -4,7 +4,6 @@ import {
   setCurrentModalType,
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
-import { FC } from 'react';
 import { IPost } from '../../interfaces';
 import { useAppDispatch } from '../../hooks';
 
@@ -12,7 +11,7 @@ interface PostProps {
   post: IPost;
 }
 
-const Post: FC<PostProps> = ({ post }) => {
+const Post = ({ post }: PostProps) => {
   const dispatch = useAppDispatch();
   const { id, title, body } = post;
 

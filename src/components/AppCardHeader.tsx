@@ -1,13 +1,11 @@
 import { FaRegEdit } from 'react-icons/fa';
 import { setCurrentModalType } from '../slices/modalWindowsSlice';
 import { openModalWindow } from '../slices/modalWindowsSlice';
-import { IUser } from '../interfaces';
-import { FC } from 'react';
 import { useAppDispatch } from '../hooks';
 import { useAppSelector } from '../hooks';
 import { currentUser } from '../selectors';
 
-const AppCardHeader: FC = () => {
+const AppCardHeader = () => {
   const dispatch = useAppDispatch();
   const currentUserData = useAppSelector(currentUser) ?? null;
 
