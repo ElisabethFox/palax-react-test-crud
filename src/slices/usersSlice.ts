@@ -4,14 +4,11 @@ import {
   PayloadAction,
 } from '@reduxjs/toolkit';
 import fetchUsersData from '../thunks/fetchUsersData';
-import { IUser, IUsersState } from '../interfaces';
+import { IUser } from '../interfaces';
 
-const usersAdapter = createEntityAdapter<IUser>({
-  selectId: (user: IUser) => user.id,
-});
-
-const initialState: IUsersState = usersAdapter.getInitialState({
-  currentUserId: null,
+const usersAdapter = createEntityAdapter<IUser>({});
+const initialState = usersAdapter.getInitialState({
+  currentUserId: '',
 });
 
 const usersSlice = createSlice({
@@ -23,7 +20,7 @@ const usersSlice = createSlice({
     },
     removeUser: (state, { payload }: PayloadAction<string>) => {
       if (state.currentUserId === payload) {
-        state.currentUserId = null;
+        state.currentUserId = '';
       }
       usersAdapter.removeOne(state, payload);
     },

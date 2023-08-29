@@ -1,7 +1,8 @@
-import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IPost } from '../interfaces';
 import fetchPostsData from '../thunks/fetchPostsData';
 
-const postsAdapter = createEntityAdapter();
+const postsAdapter = createEntityAdapter<IPost>();
 const initialState = postsAdapter.getInitialState();
 
 const postsSlice = createSlice({
@@ -9,13 +10,13 @@ const postsSlice = createSlice({
   initialState,
   reducers: {
     addPost: postsAdapter.addOne,
-    deletePost: (state, { payload }) => {
+    deletePost: (state, { payload }: PayloadAction<number>) => {
       postsAdapter.removeOne(state, payload);
     },
     changePost: postsAdapter.updateOne,
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchPostsData.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchPostsData.fulfilled, (state, { payload }: PayloadAction<IPost[]>) => {
       postsAdapter.setAll(state, payload);
     });
   },
