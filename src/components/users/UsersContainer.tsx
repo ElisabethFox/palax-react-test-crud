@@ -2,7 +2,6 @@ import User from './User';
 import { usersSelector } from '../../selectors';
 import { setCurrentUser } from '../../slices/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { FC } from 'react';
 
 const UsersContainer = () => {
   const dispatch = useAppDispatch();

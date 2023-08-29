@@ -38,7 +38,7 @@ const AddPostModalWindow = () => {
       const { title, postText } = values;
       try {
         if (currentUserData !== null) {
-          createNewPost({id: '1', title, userId: currentUserData.id, body: postText})
+          createNewPost({id: 1, title, userId: currentUserData.id, body: postText})
           handleCloseModalWindow();
           toast.success('Post Created!');
         }

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {ComponentType, createContext, ReactElement } from 'react';
+import {createContext, ReactElement } from 'react';
 import { addPost, deletePost, changePost } from '../slices/postsSlice';
 import { useAppDispatch } from '../hooks';
 import { IPost } from '../interfaces';
 
 interface PostsContextValue {
-  deleteCurrentPost: (id: string) => Promise<void>;
-  changeCurrentPost: (id: string, data: string) => Promise<void>;
+  deleteCurrentPost: (id: number) => Promise<void>;
+  changeCurrentPost: (id: number, data: string) => Promise<void>;
   createNewPost: (data: IPost) => Promise<void>;
 }
 
@@ -23,14 +23,14 @@ interface PostsContextProviderProps {
 const PostsContextProvider = ({ children }: PostsContextProviderProps) => {
   const dispatch = useAppDispatch();
 
-  const deleteCurrentPost = async (id: string) => {
+  const deleteCurrentPost = async (id: number) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.delete(path);
 
     dispatch(deletePost(id));
   };
 
-  const changeCurrentPost = async (id: string, data: string) => {
+  const changeCurrentPost = async (id: number, data: string) => {
     const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
     await axios.put(path, data);
 

@@ -2,7 +2,6 @@ import DeletePostModalWindow from './DeletePostModalWindow';
 import './styles.css';
 import ChangePostModalWindow from './ChangePostModalWindow';
 import AddPostModalWindow from './AddPostModalWindow';
-import { FC } from 'react';
 import { useAppSelector } from '../../hooks';
 
 const ModalWindow = () => {

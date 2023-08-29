@@ -1,7 +1,6 @@
 import cn from 'classnames';
 import { currentUser } from '../../selectors';
 import { useAppSelector } from '../../hooks';
-import { FC } from 'react';
 import { IUser } from '../../interfaces';
 
 interface UserProps {
