@@ -21,5 +21,5 @@ export interface IModalButton {
 export interface IModalWindow {
   isOpen: boolean;
   type: string;
-  relevantPost: string;
+  relevantPostId: number;
 }

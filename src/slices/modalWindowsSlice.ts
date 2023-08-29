@@ -10,7 +10,7 @@ const modalWindowAdapter = createEntityAdapter<IModalWindow>();
 const initialState = modalWindowAdapter.getInitialState({
   isOpen: false,
   type: '',
-  relevantPost: '',
+  relevantPostId: 0,
 });
 
 const modalWindowSlice = createSlice({
@@ -26,8 +26,8 @@ const modalWindowSlice = createSlice({
     setCurrentModalType: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    setRelevantPost: (state, action: PayloadAction<string>) => {
-      state.relevantPost = action.payload;
+    setRelevantPost: (state, action: PayloadAction<number>) => {
+      state.relevantPostId = action.payload;
     },
   },
 });
