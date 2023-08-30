@@ -92,7 +92,7 @@ const AddPostModalWindow = () => {
       <div className="modal-body">
         <h6>Post Title</h6>
         <Form className="py-1 rounded-2">
-          <div className="form-group">
+          <div className="form-group title-form">
             <Form.Control
               ref={refModalInput}
               id="title"
