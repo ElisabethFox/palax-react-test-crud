@@ -12,12 +12,13 @@ const PostsContainer = () => {
 
   const refPosts = useRef<HTMLInputElement>(null);
 
+  // Скролл при открытии до самого свежего поста + скролл до нового поста при добавлении поста
   useEffect(() => {
     refPosts.current?.lastElementChild?.scrollIntoView({
       block: 'end',
       behavior: 'smooth',
     });
-  }, [posts]);
+  }, [posts, currentUserData]);
 
   return (
     <div className="posts__container" ref={refPosts}>

@@ -1,8 +1,9 @@
+import * as Yup from 'yup';
 import Form from 'react-bootstrap/Form';
-import { useFormik } from 'formik';
-import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { usePostsData } from '../../hooks';
+import { useFormik } from 'formik';
+import { useRef, useEffect, MouseEvent } from 'react';
+import { usePostsData, useAppDispatch, useAppSelector } from '../../hooks';
 import { currentUser } from '../../selectors';
 import {
   closeModalWindow,
@@ -10,11 +11,7 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
-import { useAppDispatch } from '../../hooks';
-import { useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
-import { MouseEvent } from 'react';
-import * as Yup from 'yup';
 
 interface IFormFields {
   title: string;
@@ -28,12 +25,14 @@ const formSchema = Yup.object().shape({
 
 const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
-  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
-  const currentUserData = useAppSelector(currentUser) ?? null;
   const { createNewPost } = usePostsData();
+  const isModalWindowOpen = useAppSelector(({ modal }) => modal.isOpen);
+  const currentUserData = useAppSelector(currentUser) ?? null;
   const refModalInput = useRef<HTMLInputElement>(null);
+
+  // Имитируем создание id для поста, т.к. фейковый api это не сделает сам
   const lastElementId = useAppSelector(
-    (state) => state.posts.ids[state.posts.ids.length - 1]
+    ({ posts }) => posts.ids[posts.ids.length - 1]
   );
   const id: number = Number(lastElementId) + 1;
 
@@ -41,7 +40,7 @@ const AddPostModalWindow = () => {
     refModalInput?.current?.focus();
   }, []);
 
-  const handleCloseModalWindow = () => {
+  const handleCloseModalWindow = (): void => {
     dispatch(closeModalWindow());
     dispatch(setCurrentModalType(null));
     dispatch(setRelevantPost(null));
@@ -72,9 +71,9 @@ const AddPostModalWindow = () => {
   });
 
   const handleClick = (
-    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
-    event.preventDefault();
+    e.preventDefault();
     formik.handleSubmit();
   };
 
@@ -99,7 +98,8 @@ const AddPostModalWindow = () => {
               id="title"
               type="text"
               name="title"
-              aria-label="Add"
+              aria-label="Create title for new post"
+              placeholder="Create title for new post"
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
               isInvalid={(formik.errors.title && formik.touched.title) || false}
@@ -120,10 +120,13 @@ const AddPostModalWindow = () => {
               id="postText"
               type="text"
               name="postText"
-              aria-label="Add"
+              aria-label="Create text for new post"
+              placeholder="Create text for new post"
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
-              isInvalid={(formik.errors.postText && formik.touched.postText) || false}
+              isInvalid={
+                (formik.errors.postText && formik.touched.postText) || false
+              }
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               `Create post text`
@@ -134,7 +137,7 @@ const AddPostModalWindow = () => {
           </div>
 
           <div className="d-flex justify-content-end">
-            <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
+            <ModalButton title="Cancel" onClick={handleCloseModalWindow} />
             <ModalButton title="Create" onClick={handleClick} priority />
           </div>
         </Form>

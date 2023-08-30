@@ -1,8 +1,8 @@
+import * as Yup from 'yup';
 import Form from 'react-bootstrap/Form';
-import { useFormik } from 'formik';
-import { useRef, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-
+import { useFormik } from 'formik';
+import { useRef, useEffect, MouseEvent } from 'react';
 import ModalButton from './ModalButton';
 import {
   closeModalWindow,
@@ -10,12 +10,8 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import { postsSelector } from '../../selectors';
-import { usePostsData } from '../../hooks';
-import { useAppDispatch } from '../../hooks';
-import { useAppSelector } from '../../hooks';
+import { usePostsData, useAppDispatch, useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
-import { MouseEvent } from 'react';
-import * as Yup from 'yup';
 
 interface IFormFields {
   postText: string;
@@ -27,19 +23,19 @@ const formSchema = Yup.object().shape({
 
 const ChangePostModalWindow = () => {
   const dispatch = useAppDispatch();
-  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
-  const relevantPostId = useAppSelector((state) => state.modal.relevantPostId);
-  const refModalInput = useRef<HTMLTextAreaElement>(null);
   const { changeCurrentPost } = usePostsData();
+  const isModalWindowOpen = useAppSelector(({ modal }) => modal.isOpen);
+  const relevantPostId = useAppSelector(({ modal }) => modal.relevantPostId);
+  const refModalInput = useRef<HTMLTextAreaElement>(null);
 
   const posts = useAppSelector(postsSelector.selectAll);
-  const currentPost = posts.find((post) => post.id === relevantPostId) || null;
+  const currentPost = posts.find(({ id }) => id === relevantPostId) || null;
 
   useEffect(() => {
     refModalInput?.current?.focus();
   }, []);
 
-  const handleCloseModalWindow = () => {
+  const handleCloseModalWindow = (): void => {
     dispatch(closeModalWindow());
     dispatch(setCurrentModalType(null));
     dispatch(setRelevantPost(null));
@@ -63,9 +59,9 @@ const ChangePostModalWindow = () => {
   });
 
   const handleClick = (
-    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
-    event.preventDefault();
+    e.preventDefault();
     formik.handleSubmit();
   };
 
@@ -92,12 +88,14 @@ const ChangePostModalWindow = () => {
               id="postText"
               type="text"
               name="postText"
-              aria-label="Change"
+              aria-label="Change Post"
               className="p-2 ps-2 form-control"
-              placeholder="Сreate a new test post"
+              placeholder="Сreate a new post text"
               onChange={formik.handleChange}
               value={formik.values.postText}
-              isInvalid={(formik.errors.postText && formik.touched.postText) || false}
+              isInvalid={
+                (formik.errors.postText && formik.touched.postText) || false
+              }
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               `Change`
@@ -108,7 +106,7 @@ const ChangePostModalWindow = () => {
           </div>
 
           <div className="d-flex justify-content-end">
-            <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
+            <ModalButton title="Cancel" onClick={handleCloseModalWindow} />
             <ModalButton title="Change" onClick={handleClick} priority />
           </div>
         </Form>

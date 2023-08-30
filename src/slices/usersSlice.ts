@@ -13,8 +13,10 @@ interface UsersState extends EntityState<IUser> {
   currentUserId: number | null;
 }
 
+const savedCurrentUserId = Number(localStorage.getItem('currentUserId'));
+
 const initialState: UsersState = usersAdapter.getInitialState({
-  currentUserId: null,
+  currentUserId: savedCurrentUserId ?? null,
 });
 
 const usersSlice = createSlice({
@@ -23,6 +25,7 @@ const usersSlice = createSlice({
   reducers: {
     setCurrentUser: (state, { payload }: PayloadAction<number>) => {
       state.currentUserId = payload;
+      localStorage.setItem('currentUserId', String(payload));
     },
     removeUser: (state, { payload }: PayloadAction<number>) => {
       if (state.currentUserId === payload) {
@@ -34,9 +37,10 @@ const usersSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder.addCase(fetchUsersData.fulfilled, (state, { payload }) => {
+    builder
+    .addCase(fetchUsersData.fulfilled, (state, { payload }) => {
       usersAdapter.setAll(state, payload);
-    });
+    })
   },
 });
 
