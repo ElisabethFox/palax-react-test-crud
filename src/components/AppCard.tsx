@@ -7,7 +7,7 @@ const AppCard = () => {
     <div className="app-card">
       <div className="card__headers">
         <div className="users__header">
-          <h5>USERNAMES</h5>
+          <h5>Usernames</h5>
         </div>
         <div className="posts__header">
           <AppCardHeader />

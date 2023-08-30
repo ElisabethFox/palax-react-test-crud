@@ -1,15 +1,14 @@
-import { currentUser, postsSelector } from '../../selectors';
-import Post from './Post';
-import { useAppSelector } from '../../hooks';
 import { useEffect, useRef } from 'react';
+import Post from './Post';
+import { currentUser, postsSelector } from '../../selectors';
+import { useAppSelector } from '../../hooks';
 
 const PostsContainer = () => {
   const posts = useAppSelector(postsSelector.selectAll);
   const currentUserData = useAppSelector(currentUser);
   const currentUserPosts = posts.filter(
-    (post) => post.userId === currentUserData?.id
+    ({ userId }) => userId === currentUserData?.id
   );
-
   const refPosts = useRef<HTMLInputElement>(null);
 
   // Скролл при открытии до самого свежего поста + скролл до нового поста при добавлении поста

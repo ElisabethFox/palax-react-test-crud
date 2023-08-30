@@ -1,15 +1,14 @@
-import { FaRegEdit } from 'react-icons/fa';
 import { setCurrentModalType } from '../slices/modalWindowsSlice';
 import { openModalWindow } from '../slices/modalWindowsSlice';
-import { useAppDispatch } from '../hooks';
-import { useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { currentUser } from '../selectors';
+import { FaRegEdit } from 'react-icons/fa';
 
 const AppCardHeader = () => {
   const dispatch = useAppDispatch();
   const currentUserData = useAppSelector(currentUser) ?? null;
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     dispatch(setCurrentModalType('add'));
     dispatch(openModalWindow());
   };
@@ -22,15 +21,16 @@ const AppCardHeader = () => {
     );
   }
 
+  const { username, name, website } = currentUserData;
+
   return (
     <div className="user-info">
       <ul className="user-info__list">
         <li>
-          <b>Posts created by:</b> {currentUserData.username} (
-          {currentUserData.name})
+          <b>Posts created by:</b> {username} ({name})
         </li>
         <li>
-          <b>Website:</b> {currentUserData.website}
+          <b>Website:</b> {website}
         </li>
       </ul>
 

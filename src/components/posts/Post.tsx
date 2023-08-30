@@ -1,4 +1,3 @@
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 import {
   openModalWindow,
   setCurrentModalType,
@@ -6,6 +5,7 @@ import {
 } from '../../slices/modalWindowsSlice';
 import { IPost } from '../../interfaces';
 import { useAppDispatch } from '../../hooks';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 
 interface PostProps {
   post: IPost;

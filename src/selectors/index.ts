@@ -3,13 +3,13 @@ import { RootState } from '../slices';
 import { postsAdapter } from '../slices/postsSlice';
 
 const usersSelector = usersAdapter.getSelectors(
-  (state: RootState) => state.users
+  ({ users }: RootState) => users
 );
 const postsSelector = postsAdapter.getSelectors(
-  (state: RootState) => state.posts
+  ({ posts }: RootState) => posts
 );
 const postsIdsSelector = postsAdapter.getSelectors(
-  (state: RootState) => state.posts
+  ({ posts }: RootState) => posts
 );
 
 const currentUser = (state: RootState) => {

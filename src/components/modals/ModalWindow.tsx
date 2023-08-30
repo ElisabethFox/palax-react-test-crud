@@ -1,11 +1,11 @@
 import DeletePostModalWindow from './DeletePostModalWindow';
-import './styles.css';
 import ChangePostModalWindow from './ChangePostModalWindow';
 import AddPostModalWindow from './AddPostModalWindow';
 import { useAppSelector } from '../../hooks';
+import './styles.css';
 
 const ModalWindow = () => {
-  const currentModalWindowType = useAppSelector((state) => state.modal.type);
+  const currentModalWindowType = useAppSelector(({ modal }) => modal.type);
 
   if (currentModalWindowType === 'delete') {
     return <DeletePostModalWindow />;

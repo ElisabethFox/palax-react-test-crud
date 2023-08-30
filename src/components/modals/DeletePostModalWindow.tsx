@@ -6,17 +6,16 @@ import {
   setRelevantPost,
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
-import { useAppDispatch } from '../../hooks';
-import { useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
 
 const DeletePostModalWindow = () => {
   const dispatch = useAppDispatch();
   const { deleteCurrentPost } = usePostsData();
-  const relevantPostId = useAppSelector((state) => state.modal.relevantPostId);
-  const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
+  const relevantPostId = useAppSelector(({ modal }) => modal.relevantPostId);
+  const isModalWindowOpen = useAppSelector(({ modal }) => modal.isOpen);
 
-  const handleDeletePost = (id: number | null) => {
+  const handleDeletePost = (id: number | null): void => {
     try {
       if (id !== null) {
         deleteCurrentPost(id);
@@ -49,7 +48,7 @@ const DeletePostModalWindow = () => {
       <div className="modal-body">
         <p className="lead">Are you sure?</p>
         <div className="d-flex justify-content-end">
-          <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
+          <ModalButton title="Cancel" onClick={handleCloseModalWindow} />
           <ModalButton
             title="Delete"
             priority
