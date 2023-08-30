@@ -12,7 +12,6 @@ import {
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
 import { toast } from 'react-toastify';
-import uniqueId from 'lodash/uniqueId.js';
 
 interface IFormFields {
   title: string;
