@@ -13,7 +13,18 @@ import ModalButton from './ModalButton';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
-import { isDOMComponent } from 'react-dom/test-utils';
+import { MouseEvent } from 'react';
+import * as Yup from 'yup';
+
+interface IFormFields {
+  title: string;
+  postText: string;
+}
+
+const formSchema = Yup.object().shape({
+  title: Yup.string().trim().required('Required field'),
+  postText: Yup.string().trim().required('Required field'),
+});
 
 const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +32,9 @@ const AddPostModalWindow = () => {
   const currentUserData = useAppSelector(currentUser) ?? null;
   const { createNewPost } = usePostsData();
   const refModalInput = useRef<HTMLInputElement>(null);
-  const lastElementId = useAppSelector((state) => state.posts.ids[state.posts.ids.length - 1]);
+  const lastElementId = useAppSelector(
+    (state) => state.posts.ids[state.posts.ids.length - 1]
+  );
   const id: number = Number(lastElementId) + 1;
 
   useEffect(() => {
@@ -34,13 +47,21 @@ const AddPostModalWindow = () => {
     dispatch(setRelevantPost(null));
   };
 
-  const formik = useFormik({
+  const formik = useFormik<IFormFields>({
     initialValues: { title: '', postText: '' },
+    validationSchema: formSchema,
     onSubmit: async (values) => {
       const { title, postText } = values;
       try {
         if (currentUserData !== null) {
-          createNewPost({id, title, userId: currentUserData.id, body: postText})
+          createNewPost({
+            id,
+            title,
+            userId: currentUserData.id,
+            body: postText,
+          });
+
+          console.log(values);
           handleCloseModalWindow();
           toast.success('Post Created!');
         }
@@ -49,6 +70,13 @@ const AddPostModalWindow = () => {
       }
     },
   });
+
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    event.preventDefault();
+    formik.handleSubmit();
+  };
 
   return (
     <Modal show={isModalWindowOpen}>
@@ -68,16 +96,20 @@ const AddPostModalWindow = () => {
           <div className="form-group">
             <Form.Control
               ref={refModalInput}
-              id="name"
+              id="title"
               type="text"
-              name="name"
+              name="title"
               aria-label="Add"
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
+              isInvalid={(formik.errors.title && formik.touched.title) || false}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               `Create title`
             </Form.Label>
+            <Form.Control.Feedback type="invalid" className="invalid-feedback">
+              {formik.errors.title}
+            </Form.Control.Feedback>
           </div>
 
           <div className="form-group">
@@ -85,25 +117,25 @@ const AddPostModalWindow = () => {
             <Form.Control
               as="textarea"
               rows={5}
-              id="name"
+              id="postText"
               type="text"
-              name="name"
+              name="postText"
               aria-label="Add"
               className="p-2 ps-2 form-control"
               onChange={formik.handleChange}
+              isInvalid={(formik.errors.postText && formik.touched.postText) || false}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               `Create post text`
             </Form.Label>
+            <Form.Control.Feedback type="invalid" className="invalid-feedback">
+              {formik.errors.postText}
+            </Form.Control.Feedback>
           </div>
 
           <div className="d-flex justify-content-end">
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
-            <ModalButton
-              title="Create"
-              onClick={formik.handleSubmit}
-              priority
-            />
+            <ModalButton title="Create" onClick={handleClick} priority />
           </div>
         </Form>
       </div>

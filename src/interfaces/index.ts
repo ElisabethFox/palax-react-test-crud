@@ -19,3 +19,4 @@ export interface IModalButton {
 }
 
 export interface IModalWindow {}
+

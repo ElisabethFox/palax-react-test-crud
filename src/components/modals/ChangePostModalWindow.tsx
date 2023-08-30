@@ -14,6 +14,16 @@ import { usePostsData } from '../../hooks';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
+import { MouseEvent } from 'react';
+import * as Yup from 'yup';
+
+interface IFormFields {
+  postText: string;
+}
+
+const formSchema = Yup.object().shape({
+  postText: Yup.string().trim().required('Required field'),
+});
 
 const ChangePostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -35,8 +45,9 @@ const ChangePostModalWindow = () => {
     dispatch(setRelevantPost(null));
   };
 
-  const formik = useFormik({
+  const formik = useFormik<IFormFields>({
     initialValues: { postText: currentPost!.body },
+    validationSchema: formSchema,
     onSubmit: async (values) => {
       const { postText } = values;
       try {
@@ -50,6 +61,13 @@ const ChangePostModalWindow = () => {
       }
     },
   });
+
+  const handleClick = (
+    event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    event.preventDefault();
+    formik.handleSubmit();
+  };
 
   return (
     <Modal show={isModalWindowOpen}>
@@ -76,22 +94,22 @@ const ChangePostModalWindow = () => {
               name="postText"
               aria-label="Change"
               className="p-2 ps-2 form-control"
-              placeholder="Change"
+              placeholder="Сreate a new test post"
               onChange={formik.handleChange}
               value={formik.values.postText}
+              isInvalid={(formik.errors.postText && formik.touched.postText) || false}
             />
             <Form.Label htmlFor="name" className="form-label visually-hidden">
               `Change`
             </Form.Label>
+            <Form.Control.Feedback type="invalid" className="invalid-feedback">
+              {formik.errors.postText}
+            </Form.Control.Feedback>
           </div>
 
           <div className="d-flex justify-content-end">
             <ModalButton title="Отмена" onClick={handleCloseModalWindow} />
-            <ModalButton
-              title="Change"
-              onClick={formik.handleSubmit}
-              priority
-            />
+            <ModalButton title="Change" onClick={handleClick} priority />
           </div>
         </Form>
       </div>
