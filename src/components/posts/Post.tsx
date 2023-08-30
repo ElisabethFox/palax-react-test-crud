@@ -32,11 +32,17 @@ const Post = ({ post }: PostProps) => {
       <div className="post__header">
         <h5 className="post__title">{title.trim()}</h5>
         <div className="post-menu">
-          <button className="post-icon" onClick={() => handleChangePost(id)}>
-            <FaPencilAlt />
+          <button
+            className="post-menu-icon__btn"
+            onClick={() => handleChangePost(id)}
+          >
+            <FaPencilAlt className="post-menu-icon" />
           </button>
-          <button className="post-icon" onClick={() => handleDeletePost(id)}>
-            <FaTrashAlt />
+          <button
+            className="post-menu-icon__btn"
+            onClick={() => handleDeletePost(id)}
+          >
+            <FaTrashAlt className="post-menu-icon" />
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Post from './Post';
 import { currentUser, postsSelector } from '../../selectors';
 import { useAppSelector } from '../../hooks';
+import './styles.css';
 
 const PostsContainer = () => {
   const posts = useAppSelector(postsSelector.selectAll);

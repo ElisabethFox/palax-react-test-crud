@@ -15,7 +15,7 @@ const AppCardHeader = () => {
 
   if (currentUserData === null) {
     return (
-      <div className="user-info">
+      <div>
         <p>Change user to watch their posts</p>
       </div>
     );
@@ -26,15 +26,15 @@ const AppCardHeader = () => {
   return (
     <div className="user-info">
       <ul className="user-info__list">
-        <li>
+        <li className="user-info__list-item">
           <b>Posts created by:</b> {username} ({name})
         </li>
-        <li>
-          <b>Website:</b> {website}
+        <li className="user-info__list-item">
+          <b>Website:</b> <a href={website} className="website">{website}</a>
         </li>
       </ul>
 
-      <button className="add-post" onClick={handleClick}>
+      <button className="add-post__btn" onClick={handleClick}>
         <FaRegEdit />
         <p className="add-post__btn-text">
           new <br />

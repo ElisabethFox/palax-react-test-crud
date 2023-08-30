@@ -12,6 +12,7 @@ import {
 } from '../../slices/modalWindowsSlice';
 import ModalButton from './ModalButton';
 import { toast } from 'react-toastify';
+import uniqueId from 'lodash/uniqueId.js';
 
 interface IFormFields {
   title: string;
@@ -30,7 +31,7 @@ const AddPostModalWindow = () => {
   const currentUserData = useAppSelector(currentUser) ?? null;
   const refModalInput = useRef<HTMLInputElement>(null);
 
-  // Имитируем создание id для поста, т.к. фейковый api это не сделает сам
+  // Имитируем создание id для поста
   const lastElementId = useAppSelector(
     ({ posts }) => posts.ids[posts.ids.length - 1]
   );

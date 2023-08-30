@@ -2,10 +2,10 @@
 @import './reset.css';
 
 :root {
-  --super-dark-blue: #3B5998;
-  --dark-blue: #808CBA;
-  --middle-blue: #9FA8CB;
-  --light-blue: #DFE1EE;
+  --super-dark-blue: #3b5998;
+  --dark-blue: #808cba;
+  --middle-blue: #9fa8cb;
+  --light-blue: #dfe1ee;
 }
 
 body {
@@ -37,6 +37,9 @@ code {
 
 .main-title {
   margin: 20px 10px;
+
+  text-transform: uppercase;
+  font-weight: bold;
   color: var(--super-dark-blue);
 }
 
@@ -51,7 +54,7 @@ code {
   border-radius: 10px 10px 0 0;
 }
 
-.users__header{
+.users__header {
   display: flex;
   flex-direction: column;
 
@@ -59,9 +62,6 @@ code {
   align-items: center;
 
   width: 30%;
-
-  white-space: nowrap;
-  overflow-y: hidden;
 }
 
 .posts__header {
@@ -80,7 +80,20 @@ code {
   align-items: center;
 
   margin-right: 40px;
+}
 
+.user-info__list {
+  display: block;
+  margin: 0 30px 0 30px;
+  padding: 0;
+
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.user-info__list-item {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 .app-card {
@@ -98,18 +111,8 @@ code {
   margin: 10px;
 }
 
-.users__container{
-  width: 30%;
-  padding: 10px;
-
-  border-right: 1px groove var(--dark-blue);
-
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
 .users__container::-webkit-scrollbar,
-.posts__container::-webkit-scrollbar{
+.posts__container::-webkit-scrollbar {
   width: 10px;
 }
 
@@ -122,95 +125,29 @@ code {
 .users__container::-webkit-scrollbar-thumb,
 .posts__container::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: linear-gradient(180deg, var(--middle-blue), var(--super-dark-blue));
+  background: linear-gradient(
+    180deg,
+    var(--middle-blue),
+    var(--super-dark-blue)
+  );
 }
 
-.posts__container{
-  width: 70%;
-
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-}
-
-.user {
-  display: block;
-
-  width: 100%;
-
-  margin: 2px auto;
-  padding: 10px;
-
-  background-color: var(--middle-blue);
-
-  white-space: nowrap;
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-
-  cursor: pointer;
-}
-
-.current-user {
-  background-color: var(--super-dark-blue);
-  color: var(--light-blue);
-  font-weight: bold;
-}
-
-.post {
-  display: flex;
-  flex-direction: column;
-
-  width: 95%;
-
-  margin: 10px 0 0 20px;
-  padding: 5px;
-  
-  border: 1px groove var(--super-dark-blue);
-  border-radius: 5px;
-}
-
-.post__header {
-  display: flex;
-  justify-content: space-between;
-
-  margin: -5px -5px 0;
-  padding: 5px;
-
-  background-color: var(--super-dark-blue);
-  color: var(--light-blue);
-}
-
-.post-menu {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-
-  width: 60px;
-}
-
-.post-icon {
-  margin: 0 5px;
-}
-
-.post-icon:hover {
-  color: var(--middle-blue)
-}
-
-.add-post {
+.add-post__btn {
   background-color: var(--light-blue);
   color: var(--super-dark-blue);
 
-  height: 45px;
   width: 45px;
+  height: 45px;
 
   border-radius: 5px;
 }
 
-.add-post__btn-text{
+.add-post__btn-text {
   font-size: 11px;
   line-height: 1em;
 }
 
-.user-info__list {
-  margin: 0 0 0 45px;
-  padding: 0;
+.website {
+  color: var(--middle-blue);
+  font-weight: bold;
 }

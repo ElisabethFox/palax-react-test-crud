@@ -2,6 +2,7 @@ import User from './User';
 import { usersSelector } from '../../selectors';
 import { setCurrentUser } from '../../slices/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import './styles.css';
 
 const UsersContainer = () => {
   const dispatch = useAppDispatch();
