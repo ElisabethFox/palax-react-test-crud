@@ -2,10 +2,9 @@ import {
   createEntityAdapter,
   createSlice,
   PayloadAction,
-  EntityState
+  EntityState,
 } from '@reduxjs/toolkit';
 import { IModalWindow } from '../interfaces';
-
 
 const modalWindowAdapter = createEntityAdapter<IModalWindow>();
 
@@ -13,7 +12,7 @@ interface ModalWindowState extends EntityState<IModalWindow> {
   isOpen: boolean;
   type: string | null;
   relevantPostId: number | null;
-};
+}
 
 const initialState: ModalWindowState = modalWindowAdapter.getInitialState({
   isOpen: false,

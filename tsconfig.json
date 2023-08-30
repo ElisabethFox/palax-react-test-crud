@@ -14,8 +14,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+    "types": ["react", "react-dom"],
   },
   "exclude": [
     "node_modules",
@@ -29,4 +28,5 @@
   "types": [
     "typePatches"
   ],
+  "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", "tsx"] }],
 }

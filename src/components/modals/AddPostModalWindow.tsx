@@ -13,6 +13,7 @@ import ModalButton from './ModalButton';
 import { useAppDispatch } from '../../hooks';
 import { useAppSelector } from '../../hooks';
 import { toast } from 'react-toastify';
+import { isDOMComponent } from 'react-dom/test-utils';
 
 const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,8 @@ const AddPostModalWindow = () => {
   const currentUserData = useAppSelector(currentUser) ?? null;
   const { createNewPost } = usePostsData();
   const refModalInput = useRef<HTMLInputElement>(null);
-  const id = useAppSelector((state) => state.posts.ids.at(-1));
+  const lastElementId = useAppSelector((state) => state.posts.ids[state.posts.ids.length - 1]);
+  const id: number = Number(lastElementId) + 1;
 
   useEffect(() => {
     refModalInput?.current?.focus();
@@ -28,8 +30,8 @@ const AddPostModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(''));
-    dispatch(setRelevantPost(0));
+    dispatch(setCurrentModalType(null));
+    dispatch(setRelevantPost(null));
   };
 
   const formik = useFormik({
@@ -38,7 +40,7 @@ const AddPostModalWindow = () => {
       const { title, postText } = values;
       try {
         if (currentUserData !== null) {
-          createNewPost({id: 1, title, userId: currentUserData.id, body: postText})
+          createNewPost({id, title, userId: currentUserData.id, body: postText})
           handleCloseModalWindow();
           toast.success('Post Created!');
         }

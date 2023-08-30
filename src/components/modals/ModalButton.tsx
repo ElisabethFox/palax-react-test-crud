@@ -10,7 +10,7 @@ const ModalButton = ({ title, onClick, priority = false }: IModalButton) => {
     <button
       type={priority ? 'submit' : 'button'}
       className={ModalButttonClasses}
-      onClick={onClick}
+      onClick={(e) => onClick(e)}
     >
       {title}
     </button>

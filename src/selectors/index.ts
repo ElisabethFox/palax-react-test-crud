@@ -1,18 +1,22 @@
-import { usersAdapter } from "../slices/usersSlice";
-import { RootState } from "../slices";
-import { postsAdapter } from "../slices/postsSlice";
+import { usersAdapter } from '../slices/usersSlice';
+import { RootState } from '../slices';
+import { postsAdapter } from '../slices/postsSlice';
 
-const usersSelector = usersAdapter.getSelectors((state: RootState) => state.users);
-const postsSelector = postsAdapter.getSelectors((state: RootState) => state.posts);
-const postsIdsSelector = postsAdapter.getSelectors((state: RootState) => state.posts);
-
-const currentUser = (state: RootState) => (
-  usersSelector.selectById(state, state.users.currentUserId)
+const usersSelector = usersAdapter.getSelectors(
+  (state: RootState) => state.users
+);
+const postsSelector = postsAdapter.getSelectors(
+  (state: RootState) => state.posts
+);
+const postsIdsSelector = postsAdapter.getSelectors(
+  (state: RootState) => state.posts
 );
 
-export {
-  usersSelector,
-  postsSelector,
-  postsIdsSelector,
-  currentUser,
+const currentUser = (state: RootState) => {
+  if (state.users.currentUserId === null) {
+    return null;
+  }
+  return usersSelector.selectById(state, state.users.currentUserId);
 };
+
+export { usersSelector, postsSelector, postsIdsSelector, currentUser };

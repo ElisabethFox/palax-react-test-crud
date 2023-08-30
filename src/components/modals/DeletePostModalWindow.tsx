@@ -13,14 +13,16 @@ import { toast } from 'react-toastify';
 const DeletePostModalWindow = () => {
   const dispatch = useAppDispatch();
   const { deleteCurrentPost } = usePostsData();
-  const relevantPostId = useAppSelector((state) => state.modal.relevantPost);
+  const relevantPostId = useAppSelector((state) => state.modal.relevantPostId);
   const isModalWindowOpen = useAppSelector((state) => state.modal.isOpen);
 
-  const handleDeletePost = (id: number) => {
+  const handleDeletePost = (id: number | null) => {
     try {
-      deleteCurrentPost(id);
-      dispatch(closeModalWindow());
-      toast.success('Post Deleted!');
+      if (id !== null) {
+        deleteCurrentPost(id);
+        dispatch(closeModalWindow());
+        toast.success('Post Deleted!');
+      }
     } catch (error) {
       toast.error('Network Error');
     }
@@ -28,8 +30,8 @@ const DeletePostModalWindow = () => {
 
   const handleCloseModalWindow = () => {
     dispatch(closeModalWindow());
-    dispatch(setCurrentModalType(''));
-    dispatch(setRelevantPost(''));
+    dispatch(setCurrentModalType(null));
+    dispatch(setRelevantPost(null));
   };
 
   return (

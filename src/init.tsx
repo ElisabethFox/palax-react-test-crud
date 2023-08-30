@@ -1,10 +1,9 @@
 import { Provider } from 'react-redux';
-import App from './components/App.tsx';
+import App from './components/App';
 import store from './slices';
-import PostsContextProvider from './context/postsContext.tsx';
-import { FC } from 'react';
+import PostsContextProvider from './context/postsContext';
 
-const init: FC = () => {
+const init = (): JSX.Element => {
   return (
     <Provider store={store}>
       <PostsContextProvider>

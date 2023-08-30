@@ -2,7 +2,7 @@ import {
   createEntityAdapter,
   createSlice,
   PayloadAction,
-  EntityState
+  EntityState,
 } from '@reduxjs/toolkit';
 import fetchUsersData from '../thunks/fetchUsersData';
 import { IUser } from '../interfaces';
@@ -11,7 +11,7 @@ const usersAdapter = createEntityAdapter<IUser>();
 
 interface UsersState extends EntityState<IUser> {
   currentUserId: number | null;
-};
+}
 
 const initialState: UsersState = usersAdapter.getInitialState({
   currentUserId: null,
@@ -22,7 +22,7 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     setCurrentUser: (state, { payload }: PayloadAction<number>) => {
-        state.currentUserId = payload;
+      state.currentUserId = payload;
     },
     removeUser: (state, { payload }: PayloadAction<number>) => {
       if (state.currentUserId === payload) {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PostsContext } from '../context/postsContext.tsx';
+import { PostsContext } from '../context/postsContext';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { RootState, AppDispatch } from '../slices';
 
