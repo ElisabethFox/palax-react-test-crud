@@ -1,13 +1,15 @@
 import { useEffect, useRef } from 'react';
 import Post from './Post';
-import { currentUsers, postsSelector } from '../../selectors';
+import { postsSelector } from '../../selectors';
 import { useAppSelector } from '../../hooks';
 
 const PostsContainer = () => {
   const posts = useAppSelector(postsSelector.selectAll);
-  const currentUsersIdsData = useAppSelector((state) => state.users.currentUsersIds);
-  const currentUsersPosts = posts.filter(
-    ({ userId }) => currentUsersIdsData.includes(userId)
+  const currentUsersIdsData = useAppSelector(
+    (state) => state.users.currentUsersIds
+  );
+  const currentUsersPosts = posts.filter(({ userId }) =>
+    currentUsersIdsData.includes(userId)
   );
   const refPosts = useRef<HTMLInputElement>(null);
 

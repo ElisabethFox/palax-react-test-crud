@@ -8,15 +8,8 @@ const usersSelector = usersAdapter.getSelectors(
 const postsSelector = postsAdapter.getSelectors(
   ({ posts }: RootState) => posts
 );
-const postsIdsSelector = postsAdapter.getSelectors(
-  ({ posts }: RootState) => posts
-);
 
-const currentUsers = (state: RootState) => {
-  if (state.users.currentUsersIds === null) {
-    return null;
-  }
-  return state.users.currentUsersIds.map((id) => usersSelector.selectById(state, id));
-};
+const currentUsers = (state: RootState) =>
+  state.users.currentUsersIds.map((id) => usersSelector.selectById(state, id));
 
-export { usersSelector, postsSelector, postsIdsSelector, currentUsers };
+export { usersSelector, postsSelector, currentUsers };
