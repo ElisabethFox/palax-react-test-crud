@@ -10,10 +10,12 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchUsersData());
-    dispatch(fetchPostsData());
-  }, []);
+  if(!localStorage.getItem('persist:root')) {
+    useEffect(() => {
+      dispatch(fetchUsersData());
+      dispatch(fetchPostsData());
+    });
+  }
 
   return (
     <div className="app-container">

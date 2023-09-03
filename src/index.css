@@ -121,7 +121,7 @@ code {
 }
 
 .user {
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
 
@@ -131,6 +131,12 @@ code {
   padding: 10px;
 
   background-color: var(--middle-blue);
+
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
 }
 
 .current-user {
@@ -198,11 +204,6 @@ code {
   height: 40px;
 
   border-radius: 5px;
-}
-
-.add-post__btn-text {
-  font-size: 11px;
-  line-height: 1em;
 }
 
 .post__header {
