@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import { currentUsers } from '../../selectors';
 import { useAppSelector } from '../../hooks';
 import { IUser } from '../../interfaces';
 
@@ -20,7 +19,7 @@ const User = ({ user, onClick }: UserProps) => {
 
   return (
     <li className={usersClasses} onClick={onClick}>
-      {username}
+        {username}
     </li>
   );
 };

@@ -5,44 +5,12 @@ import { currentUsers } from '../selectors';
 import { FaRegEdit } from 'react-icons/fa';
 
 const AppCardHeader = () => {
-  const dispatch = useAppDispatch();
-  const currentUsersData = useAppSelector(currentUsers) ?? null;
-
-  const handleClick = (): void => {
-    dispatch(setCurrentModalType('add'));
-    dispatch(openModalWindow());
-  };
-
-  if (currentUsersData === null) {
     return (
       <div>
         <p>Change user to watch their posts</p>
       </div>
     );
-  }
 
-  // const { username, name, website } = currentUsersData;
-
-  return (
-    // <div className="user-info">
-    //   <ul className="user-info__list">
-    //     <li className="user-info__list-item">
-    //       <b>Posts created by:</b> {username} ({name})
-    //     </li>
-    //     <li className="user-info__list-item">
-    //       <b>Website:</b> <a href={website} className="website">{website}</a>
-    //     </li>
-    //   </ul>
-
-      <button className="add-post__btn" onClick={handleClick}>
-        <FaRegEdit />
-        <p className="add-post__btn-text">
-          new <br />
-          post
-        </p>
-      </button>
-    // </div>
-  );
 };
 
 export default AppCardHeader;

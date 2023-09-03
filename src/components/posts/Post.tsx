@@ -2,12 +2,13 @@ import {
   openModalWindow,
   setCurrentModalType,
   setRelevantPost,
+  setRelevantUser,
 } from '../../slices/modalWindowsSlice';
 import { useAppSelector } from '../../hooks';
 import { currentUsers } from '../../selectors';
 import { IPost } from '../../interfaces';
 import { useAppDispatch } from '../../hooks';
-import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { FaPencilAlt, FaTrashAlt, FaRegEdit } from 'react-icons/fa';
 
 interface PostProps {
   post: IPost;
@@ -17,8 +18,13 @@ const Post = ({ post }: PostProps) => {
   const dispatch = useAppDispatch();
   const { userId, id, title, body } = post;
   const currentUsersData = useAppSelector(currentUsers) ?? [];
-  // const currentUser = currentUsersData.filter(({ id }) => id === userId);
   const currentUser = currentUsersData.find((user) => user?.id === userId);
+
+  const handleAddPost = (id: number): void => {
+    dispatch(setCurrentModalType('add'));
+    dispatch(setRelevantUser(id));
+    dispatch(openModalWindow());
+  };
 
   const handleChangePost = (id: number): void => {
     dispatch(setCurrentModalType('change'));
@@ -37,15 +43,19 @@ const Post = ({ post }: PostProps) => {
       <div className="user-info">
         <ul className="user-info__list">
           <li className="user-info__list-item">
-            <b>Post created by:</b> {currentUser?.username} ({currentUser?.name})
+            <b>Post created by:</b> {currentUser?.username} ({currentUser?.name}
+            )
           </li>
           <li className="user-info__list-item">
-            <b>Website:</b>{currentUser?.website}
+            <b>Website: </b>
             <a href={'#'} className="website">
-              {}
+              {currentUser?.website}
             </a>
           </li>
         </ul>
+        <button className="add-post__btn" onClick={() => handleAddPost(userId)}>
+          <FaRegEdit className="add-post__icon" />
+        </button>
       </div>
       <div className="post__header">
         <h6 className="post__title">{title.trim()}</h6>

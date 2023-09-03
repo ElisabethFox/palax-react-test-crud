@@ -12,12 +12,14 @@ interface ModalWindowState extends EntityState<IModalWindow> {
   isOpen: boolean;
   type: string | null;
   relevantPostId: number | null;
+  relevantUserId: number | null;
 }
 
 const initialState: ModalWindowState = modalWindowAdapter.getInitialState({
   isOpen: false,
   type: null,
   relevantPostId: null,
+  relevantUserId: null,
 });
 
 const modalWindowSlice = createSlice({
@@ -36,6 +38,9 @@ const modalWindowSlice = createSlice({
     setRelevantPost: (state, action: PayloadAction<number | null>) => {
       state.relevantPostId = action.payload;
     },
+    setRelevantUser: (state, action: PayloadAction<number | null>) => {
+      state.relevantUserId = action.payload;
+    },
   },
 });
 
@@ -44,6 +49,7 @@ export const {
   closeModalWindow,
   setCurrentModalType,
   setRelevantPost,
+  setRelevantUser,
 } = modalWindowSlice.actions;
 export { modalWindowAdapter };
 export default modalWindowSlice.reducer;
