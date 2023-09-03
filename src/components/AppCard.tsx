@@ -1,6 +1,5 @@
 import PostsContainer from './posts/PostsContainer';
 import UsersContainer from './users/UsersContainer';
-import AppCardHeader from './AppCardHeader';
 
 const AppCard = () => {
   return (
@@ -10,7 +9,7 @@ const AppCard = () => {
           <h5>Usernames</h5>
         </div>
         <div className="posts__header">
-          <AppCardHeader />
+          <h5>Change user to watch their posts</h5>
         </div>
       </div>
       <div className="card-containers">
