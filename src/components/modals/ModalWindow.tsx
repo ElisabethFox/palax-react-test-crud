@@ -15,9 +15,9 @@ const ModalWindow = () => {
     return <ChangePostModalWindow />;
   }
 
-  if (currentModalWindowType === 'add') {
-    return <AddPostModalWindow />;
-  }
+  // if (currentModalWindowType === 'add') {
+  //   return <AddPostModalWindow />;
+  // }
 
   return null;
 };

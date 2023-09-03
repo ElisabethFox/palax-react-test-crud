@@ -1,19 +1,19 @@
 import { setCurrentModalType } from '../slices/modalWindowsSlice';
 import { openModalWindow } from '../slices/modalWindowsSlice';
 import { useAppDispatch, useAppSelector } from '../hooks';
-import { currentUser } from '../selectors';
+import { currentUsers } from '../selectors';
 import { FaRegEdit } from 'react-icons/fa';
 
 const AppCardHeader = () => {
   const dispatch = useAppDispatch();
-  const currentUserData = useAppSelector(currentUser) ?? null;
+  const currentUsersData = useAppSelector(currentUsers) ?? null;
 
   const handleClick = (): void => {
     dispatch(setCurrentModalType('add'));
     dispatch(openModalWindow());
   };
 
-  if (currentUserData === null) {
+  if (currentUsersData === null) {
     return (
       <div>
         <p>Change user to watch their posts</p>
@@ -21,18 +21,18 @@ const AppCardHeader = () => {
     );
   }
 
-  const { username, name, website } = currentUserData;
+  // const { username, name, website } = currentUsersData;
 
   return (
-    <div className="user-info">
-      <ul className="user-info__list">
-        <li className="user-info__list-item">
-          <b>Posts created by:</b> {username} ({name})
-        </li>
-        <li className="user-info__list-item">
-          <b>Website:</b> <a href={website} className="website">{website}</a>
-        </li>
-      </ul>
+    // <div className="user-info">
+    //   <ul className="user-info__list">
+    //     <li className="user-info__list-item">
+    //       <b>Posts created by:</b> {username} ({name})
+    //     </li>
+    //     <li className="user-info__list-item">
+    //       <b>Website:</b> <a href={website} className="website">{website}</a>
+    //     </li>
+    //   </ul>
 
       <button className="add-post__btn" onClick={handleClick}>
         <FaRegEdit />
@@ -41,7 +41,7 @@ const AppCardHeader = () => {
           post
         </p>
       </button>
-    </div>
+    // </div>
   );
 };
 

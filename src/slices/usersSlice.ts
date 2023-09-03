@@ -10,13 +10,13 @@ import { IUser } from '../interfaces';
 const usersAdapter = createEntityAdapter<IUser>();
 
 interface UsersState extends EntityState<IUser> {
-  currentUserId: number | null;
+  currentUsersIds: number[];
 }
 
 const savedCurrentUserId = Number(localStorage.getItem('currentUserId'));
 
 const initialState: UsersState = usersAdapter.getInitialState({
-  currentUserId: savedCurrentUserId ?? null,
+  currentUsersIds: [],
 });
 
 const usersSlice = createSlice({
@@ -24,16 +24,12 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     setCurrentUser: (state, { payload }: PayloadAction<number>) => {
-      state.currentUserId = payload;
-      localStorage.setItem('currentUserId', String(payload));
+      state.currentUsersIds.push(payload);
+      localStorage.setItem('currentUsersIds', String(payload));
     },
-    removeUser: (state, { payload }: PayloadAction<number>) => {
-      if (state.currentUserId === payload) {
-        state.currentUserId = null;
-      }
-      usersAdapter.removeOne(state, payload);
-    },
-    renameUser: usersAdapter.updateOne,
+    resetCurrentUser: (state, { payload }: PayloadAction<number>) => {
+      state.currentUsersIds = state.currentUsersIds.filter((id) => id !== payload);
+    }
   },
 
   extraReducers: (builder) => {
@@ -43,6 +39,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setCurrentUser, removeUser, renameUser } = usersSlice.actions;
+export const { setCurrentUser, resetCurrentUser } = usersSlice.actions;
 export { usersAdapter };
 export default usersSlice.reducer;

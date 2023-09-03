@@ -72,30 +72,6 @@ code {
   width: 70%;
 }
 
-.user-info {
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin-right: 40px;
-}
-
-.user-info__list {
-  display: block;
-  margin: 0 30px 0 30px;
-  padding: 0;
-
-  white-space: nowrap;
-  overflow-x: hidden;
-}
-
-.user-info__list-item {
-  overflow-x: hidden;
-  text-overflow: ellipsis;
-}
-
 .app-card {
   background-color: var(--light-blue);
   border-radius: 10px;
@@ -203,21 +179,47 @@ code {
   width: 95%;
 
   margin: 10px 0 0 20px;
-  padding: 5px;
 
   border: 1px groove var(--super-dark-blue);
   border-radius: 5px;
 }
 
-.post__header {
+.user-info {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  margin: -5px -5px 0;
   padding: 5px;
+
 
   background-color: var(--super-dark-blue);
   color: var(--light-blue);
+}
+
+.user-info__list {
+  display: block;
+
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.user-info__list-item {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.post__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+
+  background-color: var(--dark-blue);
+  color: var(--light-blue);
+}
+
+.post__text {
+  padding: 5px;
 }
 
 .post-menu {

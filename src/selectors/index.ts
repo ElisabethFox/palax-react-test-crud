@@ -12,11 +12,11 @@ const postsIdsSelector = postsAdapter.getSelectors(
   ({ posts }: RootState) => posts
 );
 
-const currentUser = (state: RootState) => {
-  if (state.users.currentUserId === null) {
+const currentUsers = (state: RootState) => {
+  if (state.users.currentUsersIds === null) {
     return null;
   }
-  return usersSelector.selectById(state, state.users.currentUserId);
+  return state.users.currentUsersIds.map((id) => usersSelector.selectById(state, id));
 };
 
-export { usersSelector, postsSelector, postsIdsSelector, currentUser };
+export { usersSelector, postsSelector, postsIdsSelector, currentUsers };

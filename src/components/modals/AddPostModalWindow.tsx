@@ -4,7 +4,7 @@ import { Modal } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { useRef, useEffect, MouseEvent } from 'react';
 import { usePostsData, useAppDispatch, useAppSelector } from '../../hooks';
-import { currentUser } from '../../selectors';
+import { currentUsers } from '../../selectors';
 import {
   closeModalWindow,
   setCurrentModalType,
@@ -27,7 +27,7 @@ const AddPostModalWindow = () => {
   const dispatch = useAppDispatch();
   const { createNewPost } = usePostsData();
   const isModalWindowOpen = useAppSelector(({ modal }) => modal.isOpen);
-  const currentUserData = useAppSelector(currentUser) ?? null;
+  const currentUsersData = useAppSelector(currentUsers) ?? null;
   const refModalInput = useRef<HTMLInputElement>(null);
 
   // Имитируем создание id для поста
@@ -52,11 +52,11 @@ const AddPostModalWindow = () => {
     onSubmit: async (values) => {
       const { title, postText } = values;
       try {
-        if (currentUserData !== null) {
+        if (currentUsersData !== null) {
           createNewPost({
             id,
             title,
-            userId: currentUserData.id,
+            userId: 7,
             body: postText,
           });
 

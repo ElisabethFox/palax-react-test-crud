@@ -1,14 +1,21 @@
 import User from './User';
 import { usersSelector } from '../../selectors';
-import { setCurrentUser } from '../../slices/usersSlice';
+import { setCurrentUser, resetCurrentUser } from '../../slices/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 
 const UsersContainer = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(usersSelector.selectAll) ?? null;
+  const currentUsersIdsData = useAppSelector((state) => state.users.currentUsersIds);
 
   const handleSetCurrentUser = async (id: number) => {
-    dispatch(setCurrentUser(id));
+    if (currentUsersIdsData.includes(id)) {
+      dispatch(resetCurrentUser(id));
+    }
+
+    if (!currentUsersIdsData.includes(id)) {
+      dispatch(setCurrentUser(id));
+    }
   };
 
   return (

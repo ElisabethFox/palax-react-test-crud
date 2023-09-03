@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { currentUser } from '../../selectors';
+import { currentUsers } from '../../selectors';
 import { useAppSelector } from '../../hooks';
 import { IUser } from '../../interfaces';
 
@@ -9,10 +9,10 @@ interface UserProps {
 }
 
 const User = ({ user, onClick }: UserProps) => {
-  const currentUserData = useAppSelector(currentUser);
+  const currentUsersIdsData = useAppSelector((state) => state.users.currentUsersIds);
   const { username, id } = user;
 
-  const isActive = () => id === currentUserData?.id;
+  const isActive = () => currentUsersIdsData.includes(id);
 
   const usersClasses = cn('user', {
     'current-user': isActive(),
