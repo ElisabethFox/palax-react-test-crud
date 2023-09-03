@@ -6,7 +6,7 @@ import {
 } from '../../slices/modalWindowsSlice';
 import { useAppSelector } from '../../hooks';
 import { currentUsers } from '../../selectors';
-import { IPost, IUser } from '../../interfaces';
+import { IPost } from '../../interfaces';
 import { useAppDispatch } from '../../hooks';
 import { FaPencilAlt, FaTrashAlt, FaRegEdit } from 'react-icons/fa';
 
