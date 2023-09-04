@@ -27,7 +27,6 @@ const AddPostModalWindow = () => {
   const { createNewPost } = usePostsData();
   const isModalWindowOpen = useAppSelector(({ modal }) => modal.isOpen);
   const relevantUserId = useAppSelector(({ modal }) => modal.relevantUserId);
-
   const refModalInput = useRef<HTMLInputElement>(null);
 
   // Имитируем создание id для поста

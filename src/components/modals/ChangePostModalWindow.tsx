@@ -42,7 +42,7 @@ const ChangePostModalWindow = () => {
   };
 
   const formik = useFormik<IFormFields>({
-    initialValues: { postText: currentPost!.body },
+    initialValues: { postText: currentPost?.body || '' },
     validationSchema: formSchema,
     onSubmit: async (values) => {
       const { postText } = values;

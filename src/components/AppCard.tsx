@@ -9,7 +9,7 @@ const AppCard = () => {
           <h5>Usernames</h5>
         </div>
         <div className="posts__header">
-          <h5>Change user to watch their posts</h5>
+          <h5>Change users to watch their posts</h5>
         </div>
       </div>
       <div className="card-containers">

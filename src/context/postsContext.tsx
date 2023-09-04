@@ -31,10 +31,18 @@ const PostsContextProvider = ({ children }: PostsContextProviderProps) => {
   };
 
   const changeCurrentPost = async (id: number, data: string) => {
-    const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
-    await axios.put(path, data);
+    // Оперируем id, т.к. api фейковое и не обработает изменение постов, которые создали мы
+    // id созданных нами постов > 100, изменим их без запроса на сервер
+    if (id > 100) {
+      dispatch(changePost({ id, changes: { body: data } }));
+    }
 
-    dispatch(changePost({ id, changes: { body: data } }));
+    if (id <= 100) {
+      const path = `https://jsonplaceholder.typicode.com/posts/${id}`;
+      await axios.put(path, data);
+
+      dispatch(changePost({ id, changes: { body: data } }));
+    }
   };
 
   const createNewPost = async (data: IPost) => {

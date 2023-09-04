@@ -6,7 +6,9 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 const UsersContainer = () => {
   const dispatch = useAppDispatch();
   const users = useAppSelector(usersSelector.selectAll);
-  const currentUsersIdsData = useAppSelector((state) => state.users.currentUsersIds);
+  const currentUsersIdsData = useAppSelector(
+    (state) => state.users.currentUsersIds
+  );
 
   const handleSetCurrentUser = async (id: number) => {
     if (currentUsersIdsData.includes(id)) {

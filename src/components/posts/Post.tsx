@@ -4,10 +4,9 @@ import {
   setRelevantPost,
   setRelevantUser,
 } from '../../slices/modalWindowsSlice';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector, useAppDispatch } from '../../hooks';
 import { currentUsers } from '../../selectors';
 import { IPost } from '../../interfaces';
-import { useAppDispatch } from '../../hooks';
 import { FaPencilAlt, FaTrashAlt, FaRegEdit } from 'react-icons/fa';
 
 interface PostProps {
@@ -43,13 +42,13 @@ const Post = ({ post }: PostProps) => {
         <div className="user-info">
           <ul className="user-info__list">
             <li className="user-info__list-item">
-              <b>Post created by:</b> {currentUser.username.trim()} (
-              {currentUser.name.trim()})
+              <b>Post created by:</b> {currentUser.username} ({currentUser.name}
+              )
             </li>
             <li className="user-info__list-item">
               <b>Website: </b>
               <a href={'#'} className="website">
-                {currentUser.website.trim()}
+                {currentUser.website}
               </a>
             </li>
           </ul>

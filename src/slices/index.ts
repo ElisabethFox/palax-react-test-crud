@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import usersReducer from './usersSlice';
 import postsReducer from './postsSlice';
 import modalWindowReducer from './modalWindowsSlice';
 import { combineReducers } from 'redux';
-
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage' 
-
 
 const rootReducer = combineReducers({
   users: usersReducer,
@@ -17,15 +15,15 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer
+  reducer: persistedReducer,
 });
-
-export default store;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export default store;

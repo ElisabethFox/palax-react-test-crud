@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   const dispatch = useAppDispatch();
 
-  if(!localStorage.getItem('persist:root')) {
+  if (!localStorage.getItem('persist:root')) {
     useEffect(() => {
       dispatch(fetchUsersData());
       dispatch(fetchPostsData());

@@ -8,7 +8,9 @@ interface UserProps {
 }
 
 const User = ({ user, onClick }: UserProps) => {
-  const currentUsersIdsData = useAppSelector((state) => state.users.currentUsersIds);
+  const currentUsersIdsData = useAppSelector(
+    (state) => state.users.currentUsersIds
+  );
   const { username, id } = user;
 
   const isActive = () => currentUsersIdsData.includes(id);
@@ -19,7 +21,7 @@ const User = ({ user, onClick }: UserProps) => {
 
   return (
     <li className={usersClasses} onClick={onClick}>
-        {username}
+      {username}
     </li>
   );
 };

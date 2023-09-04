@@ -1,6 +1,6 @@
 import { usersAdapter } from '../slices/usersSlice';
-import { RootState } from '../slices';
 import { postsAdapter } from '../slices/postsSlice';
+import { RootState } from '../slices';
 
 const usersSelector = usersAdapter.getSelectors(
   ({ users }: RootState) => users

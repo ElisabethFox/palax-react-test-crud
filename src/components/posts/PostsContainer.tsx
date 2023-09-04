@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import usePrevious from '../../hooks/usePrevious';
 import Post from './Post';
 import { postsSelector } from '../../selectors';
 import { useAppSelector } from '../../hooks';
-import usePrevious from '../../hooks/usePrevious';
 
 const PostsContainer = () => {
   const posts = useAppSelector(postsSelector.selectAll);
@@ -17,7 +17,7 @@ const PostsContainer = () => {
 
   // Скролл до нового поста при добавлении поста
   useEffect(() => {
-    if (previousPostsLength !== undefined && posts.length > previousPostsLength) {
+    if (previousPostsLength && posts.length > previousPostsLength) {
       refPosts.current?.lastElementChild?.scrollIntoView({
         block: 'end',
         behavior: 'smooth',

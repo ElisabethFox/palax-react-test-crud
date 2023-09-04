@@ -25,8 +25,10 @@ const usersSlice = createSlice({
       state.currentUsersIds.push(payload);
     },
     resetCurrentUser: (state, { payload }: PayloadAction<number>) => {
-      state.currentUsersIds = state.currentUsersIds.filter((id) => id !== payload);
-    }
+      state.currentUsersIds = state.currentUsersIds.filter(
+        (id) => id !== payload
+      );
+    },
   },
 
   extraReducers: (builder) => {
