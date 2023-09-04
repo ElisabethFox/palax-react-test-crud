@@ -1,6 +1,6 @@
 **USER & POSTS** is an application for reading and editing posts
 
-<code>[Let's try it!](https://palax-react-test-crud-lisagontsova-gmailcom.vercel.app/)</code> 
+<code>[Let's try it!](https://palax-react-test-crud-74mi7sl58-lisagontsova-gmailcom.vercel.app/)</code> 
 
 ![preview-img](./img/preview.png) 
 
